@@ -3,7 +3,6 @@
     <q-header elevated class="bg-primary text-white">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
-
         <q-toolbar-title class="q-pa-md text-h6">
           មើលឆ្នោតប្រចាំថ្ងៃ
           <span class="absolute-top-right q-ma-lx q-pa-md">
@@ -29,11 +28,7 @@
               active-class="my-menuItem-link"
             >
               <q-item-section avatar>
-                <q-icon
-                  color="primary"
-                  :name="menuItem.icon"
-                  @click="toggleLeftDrawer(menuItem.to, menuItem.name)"
-                />
+                <q-icon color="primary" :name="menuItem.icon" @click="toggleLeftDrawer" />
                 <router-link
                   :class="
                     menuItem.active
@@ -112,11 +107,13 @@ const menuList = [
   {
     icon: 'folder',
     label: 'Download App',
+    active: true,
     separator: false,
   },
   {
     icon: 'build',
     label: 'Languages',
+    active: true,
     separator: false,
   },
 ]
@@ -124,35 +121,15 @@ const menuList = [
 export default {
   setup() {
     const leftDrawerOpen = ref(false)
-
     return {
       leftDrawerOpen,
       toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value
       },
-      drawer: ref(false),
+      drawer: ref(true),
       menuList,
     }
   },
 }
 </script>
-<script setup>
-import { onMounted, watch } from 'vue'
-import AOS from 'aos'
-import { resultlotteryStore } from 'src/stores/resultlottery'
-const state = resultlotteryStore()
-onMounted(() => {
-  AOS.init({ once: true })
-  state.init()
-})
-// const scrollToTop = ()=>
-// window.scrollTo({
-//   top:0,
-//   behavior: 'smoth',
-// });
-watch(
-  () => state.isRunnin,
-  () => state.onlottoRun(),
-  { immediate: true },
-)
-</script>
+<script setup></script>

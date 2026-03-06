@@ -1,23 +1,19 @@
-import { Boot } from '@quasar/app-vite/wrappers'
+import { defineBoot } from '#q-app/wrappers'
 import axios from 'axios'
-import { Loading } from 'quasar'
-import { formatDate } from './function'
+import { date } from 'quasar'
 
-const sdate = formatDate(new Date(), 'YYYY-MM-DD')
-
+const sdate = date.formatDate(new Date(), 'YYYY-MM-DD')
 const api = axios.create({
-  baseURL: import.meta.env.VITE_APP_API_URL,
-  Headers: {
-    'x-api-key': import.meta.env.VITE_APP_X_API_KEY,
-    sSSc49ddNxTDl51hJmUhtZm1yf2V: '*',
+  baseURL: 'http://192.168.88.60:5001/api/site',
+  headers: {
+    'x-api-key': 'sSSc49ddNxTDl51hJmUhtZm1yf2V',
   },
 })
-api.Loading = (props) => Loading.show(props)
-api.hide = (delay = 500) => setTimeout(() => Loading.hide(), delay)
+api.loading = (props) => loading.show(props)
+api.hide = (delay = 500) => setTimeout(() => loading.hide(), dalay)
 api.today = () => sdate
-
-export default Boot(({ app }) => {
+export default defineBoot(({ app }) => {
   app.config.globalProperties.$axios = axios
   app.config.globalProperties.$api = api
 })
-export { api }
+export { axios, api }

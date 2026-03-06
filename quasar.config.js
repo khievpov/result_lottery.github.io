@@ -1,15 +1,16 @@
 // Configuration for your app
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file
 
-//import { defineConfig } from '#q-app/wrappers'
-const { configure } = require('quasar/wrappers')
-const path = require('path')
-//export default defineConfig((/* ctx */) => {
-module.exports = configure(function () {
+import { defineConfig } from '#q-app/wrappers'
+//const { configure } = require('quasar/wrappers')
+//const path = require('path')
+export default defineConfig((/* ctx */) => {
+  //module.exports = configure(function () {
   return {
     eslint: {
       Warning: true,
       errors: true,
+      preFetch: true,
     },
     // https://v2.quasar.dev/quasar-cli-vite/prefetch-feature
     // preFetch: true,
@@ -17,7 +18,7 @@ module.exports = configure(function () {
     // app boot file (/src/boot)
     // --> boot files are part of "main.js"
     // https://v2.quasar.dev/quasar-cli-vite/boot-files
-    boot: ['axios', 'function', 'i18n'],
+    boot: ['axios', 'function'],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file#css
     css: ['app.scss'],
@@ -66,13 +67,13 @@ module.exports = configure(function () {
 
       vitePlugins: [
         [
-          'vite-plugin-vue-i18n',
+          // 'vite-plugin-vue',
           {
             //eslint: {
             // lintCommand: 'eslint -c ./eslint.config.js "./src*/**/*.{js,mjs,cjs,vue}"',
             //useFlatConfig: true,
             //},
-            include: path.resolve(__dirname, './src/i18n/**'),
+            //include: path.resolve(__dirname, './src/i18n/**'),
           },
           //{ server: false },
         ],
@@ -106,7 +107,7 @@ module.exports = configure(function () {
       // directives: [],
 
       // Quasar plugins
-      plugins: ['loading'],
+      plugins: ['Notify', 'Loading'],
     },
 
     // animations: 'all', // --- includes all animations

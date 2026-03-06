@@ -5,11 +5,14 @@
         លទ្ឋផល
         <span style="color: darkred">ឆ្នោតថៃ</span>
         សម្រាប់ថ្ងៃទី
-        <span class="absolute-top-right q-ma-md q-pa-md"><q-spinner-radio color="red" /></span>
+        <!-- <span class="absolute-top-right q-ma-md q-pa-md"><q-spinner-radio color="red" /></span> -->
 
         <!-- <div>
           <q-spinner-radio color="red q-my-lg" size="2em" />
         </div> -->
+      </div>
+      <div class="absolute-top-right q-ma-md q-pa-md">
+        <q-spinner-radio color="red" size="2em" />
       </div>
 
       <div class="q-pa-md" style="max-width: 400px">

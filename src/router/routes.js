@@ -4,27 +4,49 @@ const routes = [
     component: () => import('layouts/MainLayout.vue'),
     children: [
       { path: '', component: () => import('pages/IndexPage.vue') },
-      { path: '', component: () => import('layouts/lotteryvn.vue') },
-      { path: '', component: () => import('layouts/lotterymvn.vue') },
-      { path: '', component: () => import('layouts/lotterykh.vue') },
+      { path: 'lotteryvn', component: () => import('layouts/lotteryvn.vue') },
+      { path: 'lotterymvn', component: () => import('layouts/lotterymvn.vue') },
+      { path: 'lotterykh', component: () => import('layouts/lotterykh.vue') },
 
       {
-        path: '/lotterythai',
+        path: 'lotterythai',
         component: () => import('layouts/lotterythai.vue'),
       },
     ],
   },
-  // path: '/page',
-  // component: () => import('layouts/lotterythai.vue'),
-  // children:[
-  //   {
-  //     path: '',
-  //   },
-  // ],
 
   {
-    path: '/page/live/stream',
-    component: () => import('src/pages/live/index.vue'),
+    path: '/pages',
+    component: () => import('layouts/PageLayout.vue'),
+    children: [
+      {
+        path: 'posts',
+        component: () => import('src/pages/posts/ResultPage.vue'),
+      },
+      {
+        path: 'home',
+        component: () => import('src/pages/home/index.vue'),
+      },
+    ],
+  },
+
+  {
+    path: '/pages/find_prize/users',
+    component: () => import('src/pages/find_prize/UserPage.vue'),
+  },
+  {
+    path: '/pages/find_prize/resultlottery/result',
+    component: () => import('src/pages/find_prize/indexPage.vue'),
+  },
+
+  {
+    path: '/pages/posts/resultlottery',
+    component: () => import('src/pages/posts/ResultPage.vue'),
+  },
+
+  {
+    path: '/pages/posts/apitest',
+    component: () => import('src/pages/posts/Mobileapp.vue'),
   },
 
   // Always leave this as last one,

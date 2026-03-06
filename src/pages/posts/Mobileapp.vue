@@ -1,15 +1,27 @@
+<script setup>
+import { useapiTest } from 'src/stores/apitest'
+import { onMounted } from 'vue'
+const store = useapiTest()
+onMounted(() => {
+  store.fetchmobileapp()
+})
+</script>
+
 <template>
   <q-card>
     <q-card-section>
       <div class="q-pa-md text-h6" style="max-width: 400px">
         លទ្ឋផល
         <span style="color: darkred">ឆ្នោតថៃ</span>
-        សម្រាប់ថ្ថ្ងៃនេះ
-        <span class="absolute-top-right q-ma-md q-pa-md"><q-spinner-radio color="red" /></span>
+        សម្រាប់ថ្ងៃទី
+        <!-- <span class="absolute-top-right q-ma-md q-pa-md"><q-spinner-radio color="red" /></span> -->
 
         <!-- <div>
           <q-spinner-radio color="red q-my-lg" size="2em" />
         </div> -->
+      </div>
+      <div class="absolute-top-right q-ma-md q-pa-md">
+        <q-spinner-radio color="red" size="2em" />
       </div>
 
       <div class="q-pa-md" style="max-width: 400px">
@@ -124,16 +136,3 @@
     </q-card-section>
   </q-card>
 </template>
-
-<script>
-import { ref } from 'vue'
-export default {
-  name: 'lotterythaiPage',
-  setup() {
-    return {
-      date: ref('date'),
-      tab: ref('mails'),
-    }
-  },
-}
-</script>
