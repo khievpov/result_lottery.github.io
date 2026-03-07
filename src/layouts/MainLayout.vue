@@ -62,7 +62,7 @@
 
 <script>
 import { ref } from 'vue'
-// import lotteryvnPage from './lotteryvn.vue'
+
 const menuList = [
   {
     icon: 'close',
