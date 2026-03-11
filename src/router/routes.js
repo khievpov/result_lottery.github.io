@@ -20,8 +20,8 @@ const routes = [
     component: () => import('layouts/PageLayout.vue'),
     children: [
       {
-        path: 'posts',
-        component: () => import('src/pages/posts/ResultPage.vue'),
+        path: 'result',
+        component: () => import('src/pages/IndexPage.vue'),
       },
       {
         path: 'home',

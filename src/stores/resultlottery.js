@@ -33,6 +33,22 @@ export const useresultlotteryStore = defineStore('resultLottery', {
     resultloading: true,
   }),
 
+  getters: {
+    isRunning: (state) => {
+      const resultlotterykeys = ['lottery5d']
+      const isAnyresultlotteryRunning = resultlotterykeys.some((key) => {
+        const resultlottery = state[key]
+        if (!resultlottery) return false
+        return Array.isArray(resultlottery.times)
+          ? resultlottery.times.some((x) => x.isRunning)
+          : Array.isArray(resultlottery.posts)
+            ? resultlottery.posts.some((x) => x.isRunning)
+            : false
+      })
+      return isAnyresultlotteryRunning
+    },
+  },
+
   actions: {
     getLiveStatus(digit) {
       const lotteryMap = Object.fromEntries(

@@ -337,7 +337,7 @@ export default {
   },
 }
 </script>
-<script setup>
+<!-- <script setup>
 import { useresultlotteryStor } from 'src/stores/resultlottery'
 
 const state = useresultlotteryStor()
@@ -345,4 +345,4 @@ onMounted(() => {
   AOS.init({ once: true })
   state.init()
 })
-</script>
+</script> -->
