@@ -1,13 +1,30 @@
 <script setup>
 import { useapiTest } from 'src/stores/apitest'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 const store = useapiTest()
-onMounted(() => {
-  store.fetchmobileapp()
+const data = ref({})
+const times = ref([])
+onMounted(async () => {
+  await store.fetchmobileapp().then((rs) => {
+    data.value = rs.data.data
+    times.value = data.value[0].times
+    console.log(times.value)
+  })
 })
 </script>
 
 <template>
+  <q-card v-for="time in times" :key="time.id">
+    <q-card-section>
+      {{ time.name }} <br />
+      <table>
+        <tr v-for="p in time.posts" :key="p">
+          <td>{{ p.name }}</td>
+          <td></td>
+        </tr>
+      </table>
+    </q-card-section>
+  </q-card>
   <q-card>
     <q-card-section>
       <div class="q-pa-md text-h6" style="max-width: 400px">
