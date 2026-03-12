@@ -4,10 +4,12 @@ import { onMounted, ref } from 'vue'
 const store = useapiTest()
 const data = ref({})
 const times = ref([])
+const prizes = ref([])
 onMounted(async () => {
   await store.fetchmobileapp().then((rs) => {
     data.value = rs.data.data
     times.value = data.value[0].times
+    prizes.value = data.value[0].prizes
     console.log(times.value)
   })
 })
@@ -17,14 +19,19 @@ onMounted(async () => {
   <q-card v-for="time in times" :key="time.id">
     <q-card-section>
       {{ time.name }} <br />
+      {{ time.value }}
       <table>
         <tr v-for="p in time.posts" :key="p">
           <td>{{ p.name }}</td>
           <td></td>
         </tr>
+        <tr v-for="t in time.prizes" :key="t">
+          <td>{{ t.value }}</td>
+        </tr>
       </table>
     </q-card-section>
   </q-card>
+
   <q-card>
     <q-card-section>
       <div class="q-pa-md text-h6" style="max-width: 400px">
@@ -66,86 +73,135 @@ onMounted(async () => {
         <q-markup-table>
           <thead class="bg-primary q-pa-sm text-h6">
             <tr>
-              <th class="text-left" style="color: white">ឆ្នោតថៃ</th>
+              <th class="text-left" style="color: white">ឆ្នោតយួន</th>
               <th class="text-center"></th>
-              <th class="text-right" style="color: white">ថៃ3:45</th>
+              <th class="text-right" style="color: white">ល្ងាច 4:30</th>
             </tr>
           </thead>
           <thead class="q-pa-sm text-h6">
             <tr>
               <th class="text-left" style="color: darkblue">ចេញថ្ងៃ</th>
               <th class="text-center"></th>
-              <th class="text-right" style="color: darkred">29-01-2026</th>
+              <th class="text-right" style="color: darkred">26-01-2026</th>
             </tr>
           </thead>
           <thead class="q-pa-sm text-h5">
             <tr>
               <td class="text-left" style="color: darkblue">A</td>
-              <td class="text-center">
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-              </td>
-              <td class="text-right">
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-              </td>
+              <td class="text-center">20</td>
+              <td class="text-right">180</td>
             </tr>
             <tr>
               <td class="text-left" style="color: darkblue">B</td>
-              <td class="text-center">
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-              </td>
-              <td class="text-right">
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-              </td>
+              <td class="text-center">83</td>
+              <td class="text-right">111</td>
             </tr>
             <tr>
               <td class="text-left" style="color: darkblue">C</td>
-              <td class="text-center">
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-              </td>
-              <td class="text-right">
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-              </td>
+              <td class="text-center">11</td>
+              <td class="text-right">831</td>
             </tr>
             <tr>
               <td class="text-left" style="color: darkblue">D</td>
-              <td class="text-center">
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-              </td>
-              <td class="text-right">
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-              </td>
+              <td class="text-center">81</td>
+              <td class="text-right">331</td>
+            </tr>
+            <tr>
+              <td class="text-left" style="color: darkblue">F</td>
+              <td class="text-center">57</td>
+              <td class="text-right">943</td>
+            </tr>
+            <tr>
+              <td class="text-left" style="color: darkblue">I</td>
+              <td class="text-center">57</td>
+              <td class="text-right">943</td>
+            </tr>
+            <tr>
+              <td class="text-left" style="color: darkblue">N</td>
+              <td class="text-center">80</td>
+              <td class="text-right">906</td>
+            </tr>
+            <tr>
+              <td class="text-left" style="color: darkblue">K</td>
+              <td class="text-center">62</td>
+              <td class="text-right">462</td>
+            </tr>
+          </thead>
+          <thead class="q-pa-ms text-h6">
+            <tr>
+              <th class="text-left"></th>
+              <th class="text-right">1</th>
+              <th class="text-right">1412</th>
+            </tr>
+            <tr>
+              <th class="text-left"></th>
+              <th class="text-right">2</th>
+              <th class="text-right">8086</th>
+            </tr>
+            <tr>
+              <th class="text-left"></th>
+              <th class="text-right">3</th>
+              <th class="text-right">7271</th>
+            </tr>
+            <tr>
+              <th class="text-left"></th>
+              <th class="text-right">4</th>
+              <th class="text-right">6667</th>
+            </tr>
+            <tr>
+              <th class="text-left"></th>
+              <th class="text-right">5</th>
+              <th class="text-right">64498</th>
+            </tr>
+            <tr>
+              <th class="text-left"></th>
+              <th class="text-right">6</th>
+              <th class="text-right">65882</th>
+            </tr>
+            <tr>
+              <th class="text-left"></th>
+              <th class="text-right">7</th>
+              <th class="text-right">89492</th>
+            </tr>
+            <tr>
+              <th class="text-left"></th>
+              <th class="text-right">8</th>
+              <th class="text-right">57156</th>
+            </tr>
+            <tr>
+              <th class="text-left"></th>
+              <th class="text-right">9</th>
+              <th class="text-right">00989</th>
+            </tr>
+            <tr>
+              <th class="text-left"></th>
+              <th class="text-right">10</th>
+              <th class="text-right">49158</th>
+            </tr>
+            <tr>
+              <th class="text-left"></th>
+              <th class="text-right">11</th>
+              <th class="text-right">85259</th>
+            </tr>
+            <tr>
+              <th class="text-left"></th>
+              <th class="text-right">12</th>
+              <th class="text-right">66334</th>
+            </tr>
+            <tr>
+              <th class="text-left"></th>
+              <th class="text-right">13</th>
+              <th class="text-right">84631</th>
+            </tr>
+            <tr>
+              <th class="text-left"></th>
+              <th class="text-right">14</th>
+              <th class="text-right">56143</th>
+            </tr>
+            <tr>
+              <th class="text-left"></th>
+              <th class="text-right">15</th>
+              <th class="text-right">84622</th>
             </tr>
           </thead>
         </q-markup-table>
