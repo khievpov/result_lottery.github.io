@@ -9,26 +9,63 @@ onMounted(async () => {
   await store.fetchmobileapp().then((rs) => {
     data.value = rs.data.data
     times.value = data.value[0].times
-    prizes.value = data.value[0].prizes
+    prizes.value = rs.data.data
     console.log(times.value)
+    console.log(post.value)
   })
 })
 </script>
 
 <template>
-  <q-card v-for="time in times" :key="time.id">
+  <q-card v-for="time in times" :key="time.id" class="q-mb-md" style="max-width: 600px">
     <q-card-section>
-      {{ time.name }} <br />
-      {{ time.value }}
-      <table>
-        <tr v-for="p in time.posts" :key="p">
-          <td>{{ p.name }}</td>
-          <td></td>
-        </tr>
-        <tr v-for="t in time.prizes" :key="t">
-          <td>{{ t.value }}</td>
-        </tr>
-      </table>
+      <div>{{ time.name }}</div>
+      <div>{{ time.date }}</div>
+
+      <q-markup-table>
+        <thead class="bg-primary q-pa-sm text-h6">
+          <tr>
+            <th class="text-left" style="color: white">ឆ្នោត-មីងណាម</th>
+            <th class="text-center"></th>
+            <th class="text-right" style="color: white">{{ time.name }}</th>
+          </tr>
+        </thead>
+        <thead class="q-pa-sm text-h6">
+          <tr>
+            <th class="text-left" style="color: darkblue">ចេញថ្ងៃ</th>
+            <th class="text-center"></th>
+            <th class="text-right" style="color: darkred">{{ time.date }}</th>
+          </tr>
+        </thead>
+
+        <tbody class="q-pa-sm text-h6">
+          <template v-for="post in time.posts || []" :key="post.id">
+            <tr>
+              <td colspan="2">
+                ប៉ុស្តិ៍ {{ post.name }}<br />
+                <ul>
+                  <label for="">រង្វាន់លួងចិត្ត</label>
+                  <li class="text-left" v-if="post.values == value">3ខ្ទង់{{ post.values }}</li>
+                  <li class="text-left">2ខ្ទង់</li>
+                </ul>
+              </td>
+              <td>{{ post.date }}</td>
+            </tr>
+            <template v-for="post in time.posts || []" :key="post.id">
+              <tr v-for="prize in post.prizes || []" :key="prize.prizeId">
+                <td colspan="2">
+                  {{ prize.prizeName }}
+                </td>
+                <td>{{ prize.prize }}</td>
+              </tr>
+
+              <tr v-for="val in prize?.values || []" :key="val.index">
+                <td>{{ val.value }}</td>
+              </tr>
+            </template>
+          </template>
+        </tbody>
+      </q-markup-table>
     </q-card-section>
   </q-card>
 
