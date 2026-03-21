@@ -25,7 +25,7 @@ const routes = [
       },
       {
         path: 'home',
-        component: () => import('src/pages/home/index.vue'),
+        component: () => import('src/pages/home/components/index.vue'),
       },
     ],
   },

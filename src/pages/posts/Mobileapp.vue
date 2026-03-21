@@ -11,7 +11,6 @@ onMounted(async () => {
     times.value = data.value[0].times
     prizes.value = rs.data.data
     console.log(times.value)
-    console.log(post.value)
   })
 })
 </script>
@@ -51,18 +50,18 @@ onMounted(async () => {
               </td>
               <td>{{ post.date }}</td>
             </tr>
-            <template v-for="post in time.posts || []" :key="post.id">
-              <tr v-for="prize in post.prizes || []" :key="prize.prizeId">
-                <td colspan="2">
-                  {{ prize.prizeName }}
-                </td>
-                <td>{{ prize.prize }}</td>
-              </tr>
+          </template>
+          <template v-for="post in time.posts || []" :key="post.id">
+            <tr v-for="prize in post.prizes || []" :key="prize.prizeId">
+              <td colspan="2">
+                {{ prize.prizeName }}
+              </td>
+              <td>{{ prize.prize }}</td>
+            </tr>
 
-              <tr v-for="val in prize?.values || []" :key="val.index">
-                <td>{{ val.value }}</td>
-              </tr>
-            </template>
+            <tr v-for="val in prize?.values || []" :key="val.index">
+              <td>{{ val.value }}</td>
+            </tr>
           </template>
         </tbody>
       </q-markup-table>
