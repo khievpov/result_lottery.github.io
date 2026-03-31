@@ -27,8 +27,8 @@
       <div class="q-gutter-y-md q-pa-md" style="max-width: 400px">
         <q-tabs v-model="tab" narrow-indicator dense>
           <q-tab class="text-primary" name="mails" icon="mails" label="ទាំងអស់" />
-          <q-tab class="text-primary" name="alarm" icon="alarms" label="ល្ងាច 4:30" />
-          <q-tab class="text-primary" name="alarms" icon="alarms" label="យប់ 6:30" />
+          <q-tab class="text-primary" name="alarm1" icon="alarms" label="ល្ងាច 4:30" />
+          <q-tab class="text-primary" name="alarm2" icon="alarms" label="យប់ 6:30" />
         </q-tabs>
       </div>
       <div class="q-pa-md" style="max-width: 400px">
@@ -337,12 +337,3 @@ export default {
   },
 }
 </script>
-<!-- <script setup>
-import { useresultlotteryStor } from 'src/stores/resultlottery'
-
-const state = useresultlotteryStor()
-onMounted(() => {
-  AOS.init({ once: true })
-  state.init()
-})
-</script> -->

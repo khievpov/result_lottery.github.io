@@ -28,13 +28,13 @@
       <div class="q-gutter-y-md q-pa-md" style="max-width: 400px">
         <q-tabs v-model="tab" narrow-indicator dense class="text-primary">
           <q-tab name="mails" icon="mails" label="ទាំងអស់" />
-          <q-tab name="alarmsa" icon="alarms" label="ខ្មែរ10:35" />
-          <q-tab name="alarmsb" icon="alarms" label="ខ្មែរ13:00" />
+          <q-tab name="alarm1" icon="alarms" label="ខ្មែរ10:35" />
+          <q-tab name="alarm2" icon="alarms" label="ខ្មែរ13:00" />
         </q-tabs>
         <q-tabs v-model="tab" narrow-indicator dense class="text-primary">
-          <q-tab name="alarmsc" icon="alarms" label="ខ្មែរ15:45" />
-          <q-tab name="alarmsd" icon="alarms" label="ខ្មែរ18:00" />
-          <q-tab name="alarmse" icon="alarms" label="ខ្មែរ19:45" />
+          <q-tab name="alarm3" icon="alarms" label="ខ្មែរ15:45" />
+          <q-tab name="alarm4" icon="alarms" label="ខ្មែរ18:00" />
+          <q-tab name="alarm5" icon="alarms" label="ខ្មែរ19:45" />
         </q-tabs>
       </div>
 
