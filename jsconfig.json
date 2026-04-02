@@ -13,6 +13,12 @@
       "vue$": ["node_modules/vue/dist/vue.runtime.esm-bundler.js"]
     }
   },
-  "exclude": ["dist", ".quasar", "node_modules", "src/pages/prize_results/components"]
+  "exclude": [
+    "dist",
+    ".quasar",
+    "node_modules",
+    "src/pages/prize_results/components",
+    "src/layouts/selection.vue"
+  ]
   // "extends": "./.quasar/tsconfig.json"
 }

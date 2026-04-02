@@ -1,15 +1,23 @@
 <script setup>
 import { useapiTest } from 'src/stores/apitest'
 import { onMounted, ref, computed } from 'vue'
+
 const store = useapiTest()
 const data = ref({})
 const times = ref([])
 const prizes = ref([])
 const posts = ref([])
 const tab = ref('all')
-const columns = computed(() => {
-  const values = posts.value?.[0]?.prizes?.[0]?.values || []
-  return values.map((val) => val.index)
+
+const filteredTimes = computed(() => {
+  if (tab.value === 'all') {
+    return times.value
+  }
+  return times.value.filter((x) => x.code === tab.value)
+})
+
+const selectedTime = computed(() => {
+  return times.value.find((x) => x.tab === tab.value)
 })
 
 onMounted(async () => {
@@ -24,22 +32,18 @@ onMounted(async () => {
 </script>
 
 <template>
-  <q-card v-for="time in times" :key="time.id" class="q-mb-md" style="max-width: 900px">
+  <q-card class="q-mb-md" style="max-width: 900px">
     <q-card-section>
       <div class="q-gutter-y-md" style="max-width: 600px">
-        <q-tabs v-model="tab" dense class="bg-indigo text-white" narrow-indicator align="justify">
-          <q-tab v-for="time in times" :key="time.id" :name="time.tab1" :label="time.name" />
-          <q-tab v-for="time in times" :key="time.id" :name="time.tab2" :label="time.name" />
-          <q-tab v-for="time in times" :key="time.id" :name="time.tab3" :label="time.name" />
-          <q-tab v-for="time in times" :key="time.id" :name="time.tab4" :label="time.name" />
-          <q-tab v-for="time in times" :key="time.id" :name="time.tab5" :label="time.name" />
+        <q-tabs v-model="tab" dense class="bg-indigo text-white" narrow-indicator>
+          <q-tab v-for="item in filteredTimes" :key="item.id" :name="item.tab" :label="item.name" />
         </q-tabs>
       </div>
 
-      <div class="q-pa-sm text-h6" style="max-width: 400px">
+      <div v-if="selectedTime" class="q-pa-sm text-h6" style="max-width: 400px">
         លទ្ឋផល
         <span style="color: darkred">ឆ្នោត</span>
-        សម្រាប់ថ្ងៃទី <span>{{ time.date }}</span>
+        សម្រាប់ថ្ងៃទី <span>{{ selectedTime.date }}</span>
       </div>
     </q-card-section>
     <q-markup-table>
@@ -49,7 +53,7 @@ onMounted(async () => {
         v-for="time in times.filter((x) => x.code == tab || tab == 'all')"
         :key="time.id"
       >
-        <!-- <q-table> -->
+        <!-- <q-table > -->
         <thead class="q-pa-sm bg-primary text-h6">
           <tr>
             <th style="color: white" colspan="9">ឆ្នោត-មីងណាម</th>
