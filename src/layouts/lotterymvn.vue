@@ -1,7 +1,7 @@
 <template>
   <q-card>
     <q-card-section>
-      <div class="q-pa-md text-h6" style="max-width: 400px">
+      <div class="q-pa-sm text-h6" style="max-width: 400px">
         លទ្ឋផល
         <span style="color: darkred">ឆ្នោត-មីងណាម</span>
         សម្រាប់ថ្ងៃទី
@@ -10,7 +10,7 @@
         <q-spinner-radio color="red" size="2em" />
       </div>
 
-      <div class="q-pa-md" style="max-width: 400px">
+      <div class="q-pa-sm" style="max-width: 400px">
         <q-input filled v-model="date" mask="date" :rules="['date']">
           <template v-slot:append>
             <q-icon name="event" class="cursor-pointer" style="color: darkred">
@@ -25,7 +25,7 @@
           </template>
         </q-input>
       </div>
-      <div class="q-gutter-y-md q-pa-md" style="max-width: 400px">
+      <div class="q-gutter-y-md q-pa-sm" style="max-width: 400px">
         <q-tabs v-model="tab" narrow-indicator dense>
           <q-tab class="text-primary" name="mails" icon="mails" label="ទាំងអស់" />
           <q-tab class="text-primary" name="alarm1" icon="alarms" label="ព្រឹក10:15" />
@@ -37,8 +37,8 @@
           <q-tab class="text-primary" name="alarm5" icon="alarms" label="យប់7:15 " />
         </q-tabs>
       </div>
-      <div class="q-pa-md" style="max-width: 400px">
-        <q-markup-table>
+      <div class="q-pa-sm" style="max-width: 400px">
+        <q-markup-table flat bordered>
           <thead class="bg-primary q-pa-sm text-h6">
             <tr>
               <th class="text-left" style="color: white">ឆ្នោត-មីងណាម</th>
@@ -53,7 +53,7 @@
               <th class="text-right" style="color: darkred">29-01-2026</th>
             </tr>
           </thead>
-          <thead class="q-pa-sm text-h5">
+          <tbody class="q-pa-sm text-h5">
             <tr>
               <td class="text-left" style="color: darkblue">A</td>
               <td class="text-center">11</td>
@@ -89,8 +89,8 @@
               <td class="text-center">24</td>
               <td class="text-right">166</td>
             </tr>
-          </thead>
-          <thead class="q-pa-ms text-h6">
+          </tbody>
+          <tfoot class="q-pa-ms text-h6">
             <tr>
               <th class="text-left"></th>
               <th class="text-right">1</th>
@@ -166,11 +166,11 @@
               <th class="text-right">15</th>
               <th class="text-right">26008</th>
             </tr>
-          </thead>
+          </tfoot>
         </q-markup-table>
       </div>
-      <div class="q-pa-md" style="max-width: 400px">
-        <q-markup-table>
+      <div class="q-pa-sm" style="max-width: 400px">
+        <q-markup-table flat bordered>
           <thead class="bg-primary q-pa-sm text-h6">
             <tr>
               <th class="text-left" style="color: white">ឆ្នោត-មីងណាម</th>
@@ -185,7 +185,7 @@
               <th class="text-right" style="color: darkred">29-01-2026</th>
             </tr>
           </thead>
-          <thead class="q-pa-sm text-h5">
+          <tbody class="q-pa-sm text-h5">
             <tr>
               <td class="text-left" style="color: darkblue">A</td>
               <td class="text-center">57</td>
@@ -221,8 +221,8 @@
               <td class="text-center">61</td>
               <td class="text-right">118</td>
             </tr>
-          </thead>
-          <thead class="q-pa-ms text-h6">
+          </tbody>
+          <tfoot class="q-pa-ms text-h6">
             <tr>
               <th class="text-left"></th>
               <th class="text-right">1</th>
@@ -283,11 +283,11 @@
               <th class="text-right">12</th>
               <th class="text-right">96709</th>
             </tr>
-          </thead>
+          </tfoot>
         </q-markup-table>
       </div>
-      <div class="q-pa-md" style="max-width: 400px">
-        <q-markup-table>
+      <div class="q-pa-sm" style="max-width: 400px">
+        <q-markup-table flat bordered>
           <thead class="bg-primary q-pa-sm text-h6">
             <tr>
               <th class="text-left" style="color: white">ឆ្នោត-មីងណាម</th>
@@ -302,7 +302,7 @@
               <th class="text-right" style="color: darkred">29-01-2026</th>
             </tr>
           </thead>
-          <thead class="q-pa-sm text-h5">
+          <tbody class="q-pa-sm text-h5">
             <tr>
               <td class="text-left" style="color: darkblue">A</td>
               <td class="text-center">68</td>
@@ -338,8 +338,8 @@
               <td class="text-center">28</td>
               <td class="text-right">668</td>
             </tr>
-          </thead>
-          <thead class="q-pa-ms text-h6">
+          </tbody>
+          <tfoot class="q-pa-ms text-h6">
             <tr>
               <th class="text-left"></th>
               <th class="text-right">1</th>
@@ -415,11 +415,11 @@
               <th class="text-right">15</th>
               <th class="text-right">91726</th>
             </tr>
-          </thead>
+          </tfoot>
         </q-markup-table>
       </div>
-      <div class="q-pa-md" style="max-width: 400px">
-        <q-markup-table>
+      <div class="q-pa-sm" style="max-width: 400px">
+        <q-markup-table flat bordered>
           <thead class="bg-primary q-pa-sm text-h6">
             <tr>
               <th class="text-left" style="color: white">ឆ្នោត-មីងណាម</th>
@@ -434,7 +434,7 @@
               <th class="text-right" style="color: darkred">29-01-2026</th>
             </tr>
           </thead>
-          <thead class="q-pa-sm text-h5">
+          <tbody class="q-pa-sm text-h5">
             <tr>
               <td class="text-left"></td>
               <td class="text-center">28</td>
@@ -470,8 +470,8 @@
               <td class="text-center">80</td>
               <td class="text-right">453</td>
             </tr>
-          </thead>
-          <thead class="q-pa-ms text-h6">
+          </tbody>
+          <tfoot class="q-pa-ms text-h6">
             <tr>
               <th class="text-left"></th>
               <th class="text-right">1</th>
@@ -567,11 +567,11 @@
               <th class="text-right">19</th>
               <th class="text-right">9463</th>
             </tr>
-          </thead>
+          </tfoot>
         </q-markup-table>
       </div>
-      <div class="q-pa-md" style="max-width: 400px">
-        <q-markup-table>
+      <div class="q-pa-sm" style="max-width: 400px">
+        <q-markup-table flat bordered>
           <thead class="bg-primary q-pa-sm text-h6">
             <tr>
               <th class="text-left" style="color: white">ឆ្នោត-មីងណាម</th>
@@ -586,7 +586,7 @@
               <th class="text-right" style="color: darkred">29-01-2026</th>
             </tr>
           </thead>
-          <thead class="q-pa-sm text-h5">
+          <tbody class="q-pa-sm text-h5">
             <tr>
               <td class="text-left"></td>
               <td class="text-center">12</td>
@@ -622,8 +622,8 @@
               <td class="text-center">14</td>
               <td class="text-right">573</td>
             </tr>
-          </thead>
-          <thead class="q-pa-ms text-h6">
+          </tbody>
+          <tfoot class="q-pa-ms text-h6">
             <tr>
               <th class="text-left"></th>
               <th class="text-right">1</th>
@@ -719,7 +719,7 @@
               <th class="text-right">19</th>
               <th class="text-right">4384</th>
             </tr>
-          </thead>
+          </tfoot>
         </q-markup-table>
       </div>
     </q-card-section>
@@ -727,14 +727,12 @@
 </template>
 
 <script>
-import { ref } from 'vue'
 export default {
   name: 'lotterymvnPage',
-  setup() {
-    return {
-      date: ref('date'),
-      tab: ref('mails'),
-    }
-  },
 }
+</script>
+<script setup>
+import { ref } from 'vue'
+const date = ref('date')
+const tab = ref('mails')
 </script>

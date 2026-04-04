@@ -17,7 +17,7 @@ const filteredTimes = computed(() => {
 })
 
 const selectedTime = computed(() => {
-  return times.value.find((x) => x.tab === tab.value)
+  return times.value.find((x) => x.code === tab.value)
 })
 
 onMounted(async () => {
@@ -33,20 +33,23 @@ onMounted(async () => {
 
 <template>
   <q-card class="q-mb-md" style="max-width: 900px">
-    <q-card-section>
-      <div class="q-gutter-y-md" style="max-width: 600px">
-        <q-tabs v-model="tab" dense class="bg-indigo text-white" narrow-indicator>
-          <q-tab v-for="item in filteredTimes" :key="item.id" :name="item.tab" :label="item.name" />
-        </q-tabs>
-      </div>
+    <div
+      class="q-pa-md text-h6"
+      style="display: flex; flex-direction: column; align-items: right; max-width: 600px"
+    >
+      <q-tabs v-model="tab" dense class="bg-indigo text-white" narrow-indicator>
+        <q-tab v-for="item in filteredTimes" :key="item.id" :name="item.all" :label="item.name" />
+      </q-tabs>
+    </div>
 
-      <div v-if="selectedTime" class="q-pa-sm text-h6" style="max-width: 400px">
-        លទ្ឋផល
-        <span style="color: darkred">ឆ្នោត</span>
-        សម្រាប់ថ្ងៃទី <span>{{ selectedTime.date }}</span>
-      </div>
-    </q-card-section>
-    <q-markup-table>
+    <div v-if="selectedTime" class="q-pa-sm text-h6">
+      លទ្ឋផល
+      <span style="color: darkred">ឆ្នោត</span>
+      សម្រាប់ថ្ងៃទី <span>{{ selectedTime.date }}</span>
+      <q-card-section> </q-card-section>
+    </div>
+
+    <q-markup-table flat bordered>
       <q-tab-panel
         v-model="tab"
         name="tab1"
@@ -56,7 +59,7 @@ onMounted(async () => {
         <!-- <q-table > -->
         <thead class="q-pa-sm bg-primary text-h6">
           <tr>
-            <th style="color: white" colspan="9">ឆ្នោត-មីងណាម</th>
+            <th style="color: white" colspan="9">ឆ្នោត-5D</th>
             <th style="color: white">{{ time.name }}</th>
           </tr>
         </thead>

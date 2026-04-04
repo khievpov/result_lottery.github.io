@@ -1,7 +1,7 @@
 <template>
   <q-card>
     <q-card-section>
-      <div class="q-pa-md text-h6" style="max-width: 400px">
+      <div class="q-pa-sm text-h6" style="max-width: 400px">
         លទ្ឋផល
         <span style="color: darkred">ឆ្នោតយួន</span>
         សម្រាប់ថ្ងៃទី
@@ -9,7 +9,7 @@
       <div class="absolute-top-right q-ma-md q-pa-md">
         <q-spinner-radio color="red" size="2em" />
       </div>
-      <div class="q-pa-md" style="max-width: 400px">
+      <div class="q-pa-sm" style="max-width: 400px">
         <q-input filled v-model="date" mask="date" :rules="['date']">
           <template v-slot:append>
             <q-icon name="event" class="cursor-pointer" style="color: darkred">
@@ -24,15 +24,15 @@
           </template>
         </q-input>
       </div>
-      <div class="q-gutter-y-md q-pa-md" style="max-width: 400px">
+      <div class="q-gutter-y-md q-pa-sm" style="max-width: 400px">
         <q-tabs v-model="tab" narrow-indicator dense>
           <q-tab class="text-primary" name="mails" icon="mails" label="ទាំងអស់" />
           <q-tab class="text-primary" name="alarm1" icon="alarms" label="ល្ងាច 4:30" />
           <q-tab class="text-primary" name="alarm2" icon="alarms" label="យប់ 6:30" />
         </q-tabs>
       </div>
-      <div class="q-pa-md" style="max-width: 400px">
-        <q-markup-table>
+      <div class="q-pa-sm" style="max-width: 400px">
+        <q-markup-table flat bordered>
           <thead class="bg-primary q-pa-sm text-h6">
             <tr>
               <th class="text-left" style="color: white">ឆ្នោតយួន</th>
@@ -47,7 +47,7 @@
               <th class="text-right" style="color: darkred">26-01-2026</th>
             </tr>
           </thead>
-          <thead class="q-pa-sm text-h5">
+          <tbody class="q-pa-sm text-h5">
             <tr>
               <td class="text-left" style="color: darkblue">A</td>
               <td class="text-center">20</td>
@@ -88,8 +88,8 @@
               <td class="text-center">62</td>
               <td class="text-right">462</td>
             </tr>
-          </thead>
-          <thead class="q-pa-ms text-h6">
+          </tbody>
+          <tfoot class="q-pa-ms text-h6">
             <tr>
               <th class="text-left"></th>
               <th class="text-right">1</th>
@@ -165,12 +165,12 @@
               <th class="text-right">15</th>
               <th class="text-right">84622</th>
             </tr>
-          </thead>
+          </tfoot>
         </q-markup-table>
       </div>
 
-      <div class="q-pa-md" style="max-width: 400px">
-        <q-markup-table>
+      <div class="q-pa-sm" style="max-width: 400px">
+        <q-markup-table flat bordered>
           <thead class="bg-primary q-pa-sm text-h6">
             <tr>
               <th class="text-left" style="color: white">ឆ្នោតយួន</th>
@@ -185,7 +185,7 @@
               <th class="text-right" style="color: darkred">26-01-2026</th>
             </tr>
           </thead>
-          <thead class="q-pa-sm text-h5">
+          <tbody class="q-pa-sm text-h5">
             <tr>
               <td class="text-left"></td>
               <td class="text-center">76</td>
@@ -221,8 +221,8 @@
               <td class="text-center">21</td>
               <td class="text-right">412</td>
             </tr>
-          </thead>
-          <thead class="q-pa-ms text-h6">
+          </tbody>
+          <tfoot class="q-pa-ms text-h6">
             <tr>
               <th class="text-left"></th>
               <th class="text-right">1</th>
@@ -318,7 +318,7 @@
               <th class="text-right">19</th>
               <th class="text-right">4778</th>
             </tr>
-          </thead>
+          </tfoot>
         </q-markup-table>
       </div>
     </q-card-section>
@@ -326,14 +326,13 @@
 </template>
 
 <script>
-import { ref } from 'vue'
 export default {
   name: 'lotteryvnPage',
-  setup() {
-    return {
-      date: ref('date'),
-      tab: ref('mails'),
-    }
-  },
 }
+</script>
+<script setup>
+import { ref } from 'vue'
+
+const date = ref('date')
+const tab = ref('mails')
 </script>

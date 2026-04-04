@@ -105,6 +105,15 @@ const menuList = [
     separator: false,
   },
   {
+    home: 'local_activity',
+    icon: 'local_activity',
+    label: 'ឆ្នោត5D',
+    class: 'fit-link',
+    to: '5d',
+    active: true,
+    separator: false,
+  },
+  {
     icon: 'folder',
     label: 'Download App',
     active: true,

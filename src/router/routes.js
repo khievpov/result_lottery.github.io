@@ -7,11 +7,9 @@ const routes = [
       { path: 'lotteryvn', component: () => import('layouts/lotteryvn.vue') },
       { path: 'lotterymvn', component: () => import('layouts/lotterymvn.vue') },
       { path: 'lotterykh', component: () => import('layouts/lotterykh.vue') },
+      { path: 'lotterythai', component: () => import('layouts/lotterythai.vue') },
 
-      {
-        path: 'lotterythai',
-        component: () => import('layouts/lotterythai.vue'),
-      },
+      { path: '5d', component: () => import('src/pages/posts/Mobileapp.vue') },
     ],
   },
 

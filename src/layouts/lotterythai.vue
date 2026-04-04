@@ -1,7 +1,7 @@
 <template>
   <q-card>
     <q-card-section>
-      <div class="q-pa-md text-h6" style="max-width: 400px">
+      <div class="q-pa-sm text-h6" style="max-width: 400px">
         លទ្ឋផល
         <span style="color: darkred">ឆ្នោតថៃ</span>
         សម្រាប់ថ្ងៃទី
@@ -10,7 +10,7 @@
         <q-spinner-radio color="red" size="2em" />
       </div>
 
-      <div class="q-pa-md" style="max-width: 400px">
+      <div class="q-pa-sm" style="max-width: 400px">
         <q-input filled v-model="date" mask="date" :rules="['date']">
           <template v-slot:append>
             <q-icon name="event" class="cursor-pointer" style="color: darkred">
@@ -25,38 +25,56 @@
           </template>
         </q-input>
       </div>
-      <div class="q-gutter-y-md q-pa-md" style="max-width: 400px">
+      <div class="q-gutter-y-md q-pa-sm" style="max-width: 400px">
         <q-tabs v-model="tab" narrow-indicator dense>
-          <q-tab class="text-primary" name="mails" icon="mails" label="ទាំងអស់" />
-          <q-tab class="text-primary" name="alarms" icon="alarms" label="ថៃ3:45" />
+          <q-tab
+            v-for="time in times"
+            :key="time.id"
+            :name="time.code"
+            :icon="time.icon"
+            :label="time.name"
+          />
         </q-tabs>
       </div>
-      <div class="q-pa-md" style="max-width: 400px">
-        <q-markup-table>
+      <div class="q-pa-sm" style="max-width: 400px">
+        <q-markup-table
+          flat
+          bordered
+          v-for="time in times.filter((x) => x.code == tab || tab == 'all')"
+          :key="time.id"
+        >
           <thead class="bg-primary q-pa-sm text-h6">
             <tr>
-              <th class="text-left" style="color: white">ឆ្នោតថៃ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: white">ថៃ3:45</th>
+              <th style="color: white" colspan="3">ឆ្នោតថៃ</th>
+              <th style="color: white">{{ time.name }}</th>
             </tr>
           </thead>
-          <thead class="q-pa-sm text-h6">
+          <thead class="q-pa-sm text-h4">
             <tr>
-              <th class="text-left" style="color: darkblue">ចេញថ្ងៃ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: darkred">29-01-2026</th>
+              <th style="color: darkblue" colspan="3">ចេញថ្ងៃ</th>
+              <th style="color: darkred">{{ time.date }}</th>
             </tr>
           </thead>
-          <thead class="q-pa-sm text-h5">
+          <tbody class="q-pa-sm text-h4">
             <tr>
-              <td class="text-left" style="color: darkblue">A</td>
-              <td class="text-center">
+              <td style="color: darkblue" colspan="2">A</td>
+              <td>57</td>
+              <td>168</td>
+            </tr>
+            <tr>
+              <td style="color: darkblue" colspan="2">B</td>
+              <td>68</td>
+              <td>169</td>
+            </tr>
+            <tr>
+              <td style="color: darkblue" colspan="2">C</td>
+              <td>
                 <q-spinner-ios color="primary" size="1em" />
                 <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
                 <q-spinner-ios color="primary" size="1em" />
                 <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
               </td>
-              <td class="text-right">
+              <td>
                 <q-spinner-ios color="primary" size="1em" />
                 <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
                 <q-spinner-ios color="primary" size="1em" />
@@ -66,31 +84,14 @@
               </td>
             </tr>
             <tr>
-              <td class="text-left" style="color: darkblue">B</td>
-              <td class="text-center">
+              <td style="color: darkblue" colspan="2">D</td>
+              <td>
                 <q-spinner-ios color="primary" size="1em" />
                 <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
                 <q-spinner-ios color="primary" size="1em" />
                 <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
               </td>
-              <td class="text-right">
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-              </td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">C</td>
-              <td class="text-center">
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-              </td>
-              <td class="text-right">
+              <td>
                 <q-spinner-ios color="primary" size="1em" />
                 <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
                 <q-spinner-ios color="primary" size="1em" />
@@ -99,39 +100,104 @@
                 <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
               </td>
             </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">D</td>
-              <td class="text-center">
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-              </td>
-              <td class="text-right">
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-              </td>
-            </tr>
-          </thead>
+          </tbody>
+          <q-separator :key="'time.id' + index" v-if="time.separator" />
         </q-markup-table>
       </div>
     </q-card-section>
   </q-card>
 </template>
-
 <script>
-import { ref } from 'vue'
 export default {
   name: 'lotterythaiPage',
-  setup() {
-    return {
-      date: ref('date'),
-      tab: ref('mails'),
-    }
-  },
 }
+</script>
+<script setup>
+import { ref } from 'vue'
+const date = ref('date')
+const tab = ref('all')
+
+const times = ref([
+  {
+    id: 1,
+    code: 'mails',
+    name: 'ទាំងអស់',
+    icon: 'mails',
+    date: '4-04-2026',
+    separator: true,
+    posts: [
+      {
+        id: 1,
+        name: 'ប៉ុស្តិ៍ A',
+        prizes: [
+          {
+            prizeId: 1,
+            prizeName: 'រង្វាន់ទី១',
+            prize: '9000$',
+            values: [
+              {
+                index: 1,
+                value: '12345',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 2,
+    code: 'alarms',
+    name: 'ថៃ3:45',
+    icon: 'alarms',
+    date: '4-04-2026',
+    separator: false,
+    posts: [
+      {
+        id: 2,
+        name: 'ប៉ុស្តិ៍ A',
+        prizes: [
+          {
+            prizeId: 2,
+            prizeName: 'រង្វាន់ទី១',
+            prize: '9000$',
+            values: [
+              {
+                index: 1,
+                value: '123456',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    code: 'alarms3',
+    name: 'ថៃ4:45',
+    icon: 'alarms',
+    date: '4-04-2026',
+    separator: false,
+    posts: [
+      {
+        id: 3,
+        name: 'ប៉ុស្តិ៍ A',
+        prizes: [
+          {
+            prizeId: 3,
+            prizeName: 'រង្វាន់ទី១',
+            prize: '1000$',
+            values: [
+              {
+                index: 1,
+                value: '123456',
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+])
 </script>
