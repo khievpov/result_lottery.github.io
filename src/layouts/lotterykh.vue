@@ -25,215 +25,59 @@
           </template>
         </q-input>
       </div>
+
       <div class="q-gutter-y-md q-pa-sm" style="max-width: 400px">
         <q-tabs v-model="tab" narrow-indicator dense class="text-primary">
           <q-tab name="mails" icon="mails" label="ទាំងអស់" />
-          <q-tab name="alarm1" icon="alarms" label="ខ្មែរ10:35" />
-          <q-tab name="alarm2" icon="alarms" label="ខ្មែរ13:00" />
+          <q-tab name="alarm1" icon="alarms" label="ខ្មែរ 10:35" />
+          <q-tab name="alarm2" icon="alarms" label="ខ្មែរ 13:00" />
         </q-tabs>
         <q-tabs v-model="tab" narrow-indicator dense class="text-primary">
-          <q-tab name="alarm3" icon="alarms" label="ខ្មែរ15:45" />
-          <q-tab name="alarm4" icon="alarms" label="ខ្មែរ18:00" />
-          <q-tab name="alarm5" icon="alarms" label="ខ្មែរ19:45" />
+          <q-tab name="alarm3" icon="alarms" label="ខ្មែរ 15:45" />
+          <q-tab name="alarm4" icon="alarms" label="ខ្មែរ 18:00" />
+          <q-tab name="alarm5" icon="alarms" label="ខ្មែរ 19:45" />
         </q-tabs>
       </div>
 
       <div class="q-pa-sm" style="max-width: 400px">
-        <q-markup-table flat bordered>
+        <q-markup-table
+          flat
+          bordered
+          v-for="time in times.filter((x) => x.code == tab || tab == 'all')"
+          :key="time.id"
+        >
           <thead class="bg-primary q-pa-sm text-h6">
             <tr>
-              <th class="text-left" style="color: white">ឆ្នោតខ្មែរ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: white">ខ្មែរ10:35</th>
+              <th style="color: white" colspan="3">ឆ្នោតខ្មែរ</th>
+              <th style="color: white">{{ time.name }}</th>
             </tr>
           </thead>
           <thead class="q-pa-sm text-h6">
             <tr>
-              <th class="text-left" style="color: darkblue">ចេញថ្ងៃ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: darkred">29-01-2026</th>
+              <th style="color: darkblue" colspan="3">ចេញថ្ងៃ</th>
+              <th style="color: darkred">{{ time.date }}</th>
             </tr>
           </thead>
           <tbody class="q-pa-sm text-h5">
             <tr>
-              <td class="text-left" style="color: darkblue">A</td>
-              <td class="text-center">57</td>
-              <td class="text-right">666</td>
+              <td style="color: darkblue" colspan="2">A</td>
+              <td>57</td>
+              <td>666</td>
             </tr>
             <tr>
-              <td class="text-left" style="color: darkblue">B</td>
-              <td class="text-center">46</td>
-              <td class="text-right">728</td>
+              <td style="color: darkblue" colspan="2">B</td>
+              <td>46</td>
+              <td>728</td>
             </tr>
             <tr>
-              <td class="text-left" style="color: darkblue">C</td>
-              <td class="text-center">41</td>
-              <td class="text-right">166</td>
+              <td style="color: darkblue" colspan="2">C</td>
+              <td>41</td>
+              <td>166</td>
             </tr>
             <tr>
-              <td class="text-left" style="color: darkblue">D</td>
-              <td class="text-center">91</td>
-              <td class="text-right">440</td>
-            </tr>
-          </tbody>
-        </q-markup-table>
-      </div>
-      <div class="q-pa-sm" style="max-width: 400px">
-        <q-markup-table flat bordered>
-          <thead class="bg-primary q-pa-sm text-h6">
-            <tr>
-              <th class="text-left" style="color: white">ឆ្នោតខ្មែរ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: white">ខ្មែរ13:00</th>
-            </tr>
-          </thead>
-          <thead class="q-pa-sm text-h6">
-            <tr>
-              <th class="text-left" style="color: darkblue">ចេញថ្ងៃ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: darkred">29-01-2026</th>
-            </tr>
-          </thead>
-          <tbody class="q-pa-sm text-h5">
-            <tr>
-              <td class="text-left" style="color: darkblue">A</td>
-              <td class="text-center">82</td>
-              <td class="text-right">518</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">B</td>
-              <td class="text-center">18</td>
-              <td class="text-right">591</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">C</td>
-              <td class="text-center">01</td>
-              <td class="text-right">992</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">D</td>
-              <td class="text-center">40</td>
-              <td class="text-right">171</td>
-            </tr>
-          </tbody>
-        </q-markup-table>
-      </div>
-      <div class="q-pa-sm" style="max-width: 400px">
-        <q-markup-table flat bordered>
-          <thead class="bg-primary q-pa-sm text-h6">
-            <tr>
-              <th class="text-left" style="color: white">ឆ្នោតខ្មែរ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: white">ខ្មែរ15:45</th>
-            </tr>
-          </thead>
-          <thead class="q-pa-sm text-h6">
-            <tr>
-              <th class="text-left" style="color: darkblue">ចេញថ្ងៃ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: darkred">29-01-2026</th>
-            </tr>
-          </thead>
-          <tbody class="q-pa-sm text-h5">
-            <tr>
-              <td class="text-left" style="color: darkblue">A</td>
-              <td class="text-center">67</td>
-              <td class="text-right">110</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">B</td>
-              <td class="text-center">74</td>
-              <td class="text-right">772</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">C</td>
-              <td class="text-center">36</td>
-              <td class="text-right">522</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">D</td>
-              <td class="text-center">01</td>
-              <td class="text-right">729</td>
-            </tr>
-          </tbody>
-        </q-markup-table>
-      </div>
-      <div class="q-pa-sm" style="max-width: 400px">
-        <q-markup-table flat bordered>
-          <thead class="bg-primary q-pa-sm text-h6">
-            <tr>
-              <th class="text-left" style="color: white">ឆ្នោតខ្មែរ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: white">ខ្មែរ18:00</th>
-            </tr>
-          </thead>
-          <thead class="q-pa-sm text-h6">
-            <tr>
-              <th class="text-left" style="color: darkblue">ចេញថ្ងៃ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: darkred">29-01-2026</th>
-            </tr>
-          </thead>
-          <tbody class="q-pa-sm text-h5">
-            <tr>
-              <td class="text-left" style="color: darkblue">A</td>
-              <td class="text-center">10</td>
-              <td class="text-right">774</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">B</td>
-              <td class="text-center">21</td>
-              <td class="text-right">174</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">C</td>
-              <td class="text-center">08</td>
-              <td class="text-right">838</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">D</td>
-              <td class="text-center">58</td>
-              <td class="text-right">407</td>
-            </tr>
-          </tbody>
-        </q-markup-table>
-      </div>
-      <div class="q-pa-sm" style="max-width: 400px">
-        <q-markup-table flat bordered>
-          <thead class="bg-primary q-pa-sm text-h6">
-            <tr>
-              <th class="text-left" style="color: white">ឆ្នោតខ្មែរ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: white">ខ្មែរ19:45</th>
-            </tr>
-          </thead>
-          <thead class="q-pa-sm text-h6">
-            <tr>
-              <th class="text-left" style="color: darkblue">ចេញថ្ងៃ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: darkred">29-01-2026</th>
-            </tr>
-          </thead>
-          <tbody class="q-pa-sm text-h5">
-            <tr>
-              <td class="text-left" style="color: darkblue">A</td>
-              <td class="text-center">43</td>
-              <td class="text-right">951</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">B</td>
-              <td class="text-center">16</td>
-              <td class="text-right">591</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">C</td>
-              <td class="text-center">93</td>
-              <td class="text-right">136</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">D</td>
-              <td class="text-center">90</td>
-              <td class="text-right">534</td>
+              <td style="color: darkblue" colspan="2">D</td>
+              <td>91</td>
+              <td>440</td>
             </tr>
           </tbody>
         </q-markup-table>
@@ -251,5 +95,50 @@ export default {
 import { ref } from 'vue'
 
 const date = ref('date')
-const tab = ref('mails')
+const tab = ref('all')
+
+const times = ref([
+  {
+    id: 1,
+    code: 'mails',
+    name: 'ទាំងអស់',
+    icon: 'mails',
+    date: '06-04-2026',
+  },
+  {
+    id: 2,
+    code: 'alarm1',
+    name: 'ខ្មែរ 10:35',
+    icon: 'alarm',
+    date: '06-04-2026',
+  },
+  {
+    id: 3,
+    code: 'alarm2',
+    name: 'ខ្មែរ 13:00',
+    icon: 'alarm',
+    date: '06-04-2026',
+  },
+  {
+    id: 4,
+    code: 'alarm3',
+    name: 'ខ្មែរ 15:45',
+    icon: 'alarm',
+    date: '06-04-2026',
+  },
+  {
+    id: 5,
+    code: 'alarm4',
+    name: 'ខ្មែរ 18:00',
+    icon: 'alarm',
+    date: '06-04-2026',
+  },
+  {
+    id: 6,
+    code: 'alarm5',
+    name: 'ខ្មែរ 19:45',
+    icon: 'alarm',
+    date: '06-04-2026',
+  },
+])
 </script>

@@ -28,696 +28,131 @@
       <div class="q-gutter-y-md q-pa-sm" style="max-width: 400px">
         <q-tabs v-model="tab" narrow-indicator dense>
           <q-tab class="text-primary" name="mails" icon="mails" label="ទាំងអស់" />
-          <q-tab class="text-primary" name="alarm1" icon="alarms" label="ព្រឹក10:15" />
-          <q-tab class="text-primary" name="alarm2" icon="alarms" label="ថ្ងៃ1:45" />
+          <q-tab class="text-primary" name="alarm1" icon="alarms" label="ព្រឹក 10:15" />
+          <q-tab class="text-primary" name="alarm2" icon="alarms" label="ថ្ងៃ 1:45" />
         </q-tabs>
         <q-tabs v-model="tab" narrow-indicator dense>
-          <q-tab class="text-primary" name="alarm3" icon="alarms" label="ល្ងាច3:45" />
-          <q-tab class="text-primary" name="alarm4" icon="alarms" label="យប់5:45" />
-          <q-tab class="text-primary" name="alarm5" icon="alarms" label="យប់7:15 " />
+          <q-tab class="text-primary" name="alarm3" icon="alarms" label="ល្ងាច 3:45" />
+          <q-tab class="text-primary" name="alarm4" icon="alarms" label="យប់ 5:45" />
+          <q-tab class="text-primary" name="alarm5" icon="alarms" label="យប់ 7:15 " />
         </q-tabs>
       </div>
       <div class="q-pa-sm" style="max-width: 400px">
-        <q-markup-table flat bordered>
+        <q-markup-table
+          flat
+          bordered
+          v-for="time in times.filter((x) => x.code == tab || tab == 'all')"
+          :key="time.id"
+        >
           <thead class="bg-primary q-pa-sm text-h6">
             <tr>
-              <th class="text-left" style="color: white">ឆ្នោត-មីងណាម</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: white">ព្រឹក10:15</th>
+              <th style="color: white" colspan="3">ឆ្នោត-មីងណាម</th>
+              <th style="color: white">{{ time.name }}</th>
             </tr>
           </thead>
           <thead class="q-pa-sm text-h6">
             <tr>
-              <th class="text-left" style="color: darkblue">ចេញថ្ងៃ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: darkred">29-01-2026</th>
+              <th style="color: darkblue" colspan="3">ចេញថ្ងៃ</th>
+              <th style="color: darkred">{{ time.date }}</th>
             </tr>
           </thead>
           <tbody class="q-pa-sm text-h5">
             <tr>
-              <td class="text-left" style="color: darkblue">A</td>
-              <td class="text-center">11</td>
-              <td class="text-right">098</td>
+              <td style="color: darkblue" colspan="2">A</td>
+              <td>11</td>
+              <td>098</td>
             </tr>
             <tr>
-              <td class="text-left" style="color: darkblue">B</td>
-              <td class="text-center">53</td>
-              <td class="text-right">140</td>
+              <td style="color: darkblue" colspan="2">B</td>
+              <td>53</td>
+              <td>140</td>
             </tr>
             <tr>
-              <td class="text-left" style="color: darkblue">C</td>
-              <td class="text-center">40</td>
-              <td class="text-right">531</td>
+              <td style="color: darkblue" colspan="2">C</td>
+              <td>40</td>
+              <td>531</td>
             </tr>
             <tr>
-              <td class="text-left" style="color: darkblue">D</td>
-              <td class="text-center">50</td>
-              <td class="text-right">314</td>
+              <td style="color: darkblue" colspan="2">D</td>
+              <td>50</td>
+              <td>314</td>
             </tr>
             <tr>
-              <td class="text-left" style="color: darkblue">F</td>
-              <td class="text-center">18</td>
-              <td class="text-right">475</td>
+              <td style="color: darkblue" colspan="2">F</td>
+              <td>18</td>
+              <td>475</td>
             </tr>
             <tr>
-              <td class="text-left" style="color: darkblue">I</td>
-              <td class="text-center">91</td>
-              <td class="text-right">575</td>
+              <td style="color: darkblue" colspan="2">I</td>
+              <td>91</td>
+              <td>575</td>
             </tr>
             <tr>
-              <td class="text-left" style="color: darkblue">N</td>
-              <td class="text-center">24</td>
-              <td class="text-right">166</td>
-            </tr>
-          </tbody>
-          <tfoot class="q-pa-ms text-h6">
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">1</th>
-              <th class="text-right">6376</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">2</th>
-              <th class="text-right">3540</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">3</th>
-              <th class="text-right">3616</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">4</th>
-              <th class="text-right">13353</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">5</th>
-              <th class="text-right">69894</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">6</th>
-              <th class="text-right">02219</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">7</th>
-              <th class="text-right">48873</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">8</th>
-              <th class="text-right">10833</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">9</th>
-              <th class="text-right">60607</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">10</th>
-              <th class="text-right">00593</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">11</th>
-              <th class="text-right">77543</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">12</th>
-              <th class="text-right">3039</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">13</th>
-              <th class="text-right">59838</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">14</th>
-              <th class="text-right">26361</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">15</th>
-              <th class="text-right">26008</th>
-            </tr>
-          </tfoot>
-        </q-markup-table>
-      </div>
-      <div class="q-pa-sm" style="max-width: 400px">
-        <q-markup-table flat bordered>
-          <thead class="bg-primary q-pa-sm text-h6">
-            <tr>
-              <th class="text-left" style="color: white">ឆ្នោត-មីងណាម</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: white">ថ្ងៃ1:45</th>
-            </tr>
-          </thead>
-          <thead class="q-pa-sm text-h6">
-            <tr>
-              <th class="text-left" style="color: darkblue">ចេញថ្ងៃ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: darkred">29-01-2026</th>
-            </tr>
-          </thead>
-          <tbody class="q-pa-sm text-h5">
-            <tr>
-              <td class="text-left" style="color: darkblue">A</td>
-              <td class="text-center">57</td>
-              <td class="text-right">587</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">B</td>
-              <td class="text-center">10</td>
-              <td class="text-right">765</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">C</td>
-              <td class="text-center">65</td>
-              <td class="text-right">107</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">D</td>
-              <td class="text-center">15</td>
-              <td class="text-right">076</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">F</td>
-              <td class="text-center">91</td>
-              <td class="text-right">954</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">I</td>
-              <td class="text-center">45</td>
-              <td class="text-right">411</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">N</td>
-              <td class="text-center">61</td>
-              <td class="text-right">118</td>
+              <td style="color: darkblue" colspan="2">N</td>
+              <td>24</td>
+              <td>166</td>
             </tr>
           </tbody>
           <tfoot class="q-pa-ms text-h6">
             <tr>
-              <th class="text-left"></th>
-              <th class="text-right">1</th>
-              <th class="text-right">8768</th>
+              <td colspan="2">1</td>
+              <td>6376</td>
             </tr>
             <tr>
-              <th class="text-left"></th>
-              <th class="text-right">2</th>
-              <th class="text-right">4559</th>
+              <td colspan="2">2</td>
+              <td>3540</td>
             </tr>
             <tr>
-              <th class="text-left"></th>
-              <th class="text-right">3</th>
-              <th class="text-right">1984</th>
+              <td colspan="2">3</td>
+              <td>3616</td>
             </tr>
             <tr>
-              <th class="text-left"></th>
-              <th class="text-right">4</th>
-              <th class="text-right">81013</th>
+              <td colspan="2">4</td>
+              <td>13353</td>
             </tr>
             <tr>
-              <th class="text-left"></th>
-              <th class="text-right">5</th>
-              <th class="text-right">68883</th>
+              <td colspan="2">5</td>
+              <td>69894</td>
             </tr>
             <tr>
-              <th class="text-left"></th>
-              <th class="text-right">6</th>
-              <th class="text-right">48093</th>
+              <td colspan="2">6</td>
+              <td>02219</td>
             </tr>
             <tr>
-              <th class="text-left"></th>
-              <th class="text-right">7</th>
-              <th class="text-right">55903</th>
+              <td colspan="2">7</td>
+              <td>48873</td>
             </tr>
             <tr>
-              <th class="text-left"></th>
-              <th class="text-right">8</th>
-              <th class="text-right">09762</th>
+              <td colspan="2">8</td>
+              <td>10833</td>
             </tr>
             <tr>
-              <th class="text-left"></th>
-              <th class="text-right">9</th>
-              <th class="text-right">36311</th>
+              <td colspan="2">9</td>
+              <td>60607</td>
             </tr>
             <tr>
-              <th class="text-left"></th>
-              <th class="text-right">10</th>
-              <th class="text-right">97872</th>
+              <td colspan="2">10</td>
+              <td>00593</td>
             </tr>
             <tr>
-              <th class="text-left"></th>
-              <th class="text-right">11</th>
-              <th class="text-right">06657</th>
+              <td colspan="2">11</td>
+              <td>77543</td>
             </tr>
             <tr>
-              <th class="text-left"></th>
-              <th class="text-right">12</th>
-              <th class="text-right">96709</th>
+              <td colspan="2">12</td>
+              <td>3039</td>
             </tr>
-          </tfoot>
-        </q-markup-table>
-      </div>
-      <div class="q-pa-sm" style="max-width: 400px">
-        <q-markup-table flat bordered>
-          <thead class="bg-primary q-pa-sm text-h6">
             <tr>
-              <th class="text-left" style="color: white">ឆ្នោត-មីងណាម</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: white">ល្ងាច3:45</th>
+              <td colspan="2">13</td>
+              <td>59838</td>
             </tr>
-          </thead>
-          <thead class="q-pa-sm text-h6">
             <tr>
-              <th class="text-left" style="color: darkblue">ចេញថ្ងៃ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: darkred">29-01-2026</th>
+              <td colspan="2">14</td>
+              <td>26361</td>
             </tr>
-          </thead>
-          <tbody class="q-pa-sm text-h5">
             <tr>
-              <td class="text-left" style="color: darkblue">A</td>
-              <td class="text-center">68</td>
-              <td class="text-right">411</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">B</td>
-              <td class="text-center">96</td>
-              <td class="text-right">239</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">C</td>
-              <td class="text-center">39</td>
-              <td class="text-right">962</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">D</td>
-              <td class="text-center">99</td>
-              <td class="text-right">623</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">F</td>
-              <td class="text-center">60</td>
-              <td class="text-right">715</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">I</td>
-              <td class="text-center">63</td>
-              <td class="text-right">388</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">N</td>
-              <td class="text-center">28</td>
-              <td class="text-right">668</td>
-            </tr>
-          </tbody>
-          <tfoot class="q-pa-ms text-h6">
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">1</th>
-              <th class="text-right">4020</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">2</th>
-              <th class="text-right">2745</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">3</th>
-              <th class="text-right">2284</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">4</th>
-              <th class="text-right">70485</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">5</th>
-              <th class="text-right">41094</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">6</th>
-              <th class="text-right">21621</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">7</th>
-              <th class="text-right">33927</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">8</th>
-              <th class="text-right">04470</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">9</th>
-              <th class="text-right">28992</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">10</th>
-              <th class="text-right">32701</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">11</th>
-              <th class="text-right">43105</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">12</th>
-              <th class="text-right">76061</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">13</th>
-              <th class="text-right">37934</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">14</th>
-              <th class="text-right">85800</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">15</th>
-              <th class="text-right">91726</th>
-            </tr>
-          </tfoot>
-        </q-markup-table>
-      </div>
-      <div class="q-pa-sm" style="max-width: 400px">
-        <q-markup-table flat bordered>
-          <thead class="bg-primary q-pa-sm text-h6">
-            <tr>
-              <th class="text-left" style="color: white">ឆ្នោត-មីងណាម</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: white">យប់5:45</th>
-            </tr>
-          </thead>
-          <thead class="q-pa-sm text-h6">
-            <tr>
-              <th class="text-left" style="color: darkblue">ចេញថ្ងៃ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: darkred">29-01-2026</th>
-            </tr>
-          </thead>
-          <tbody class="q-pa-sm text-h5">
-            <tr>
-              <td class="text-left"></td>
-              <td class="text-center">28</td>
-              <td class="text-right">481</td>
-            </tr>
-            <tr>
-              <td class="text-left"></td>
-              <td class="text-center">82</td>
-              <td class="text-right">952</td>
-            </tr>
-            <tr>
-              <td class="text-left text-h2" style="color: darkblue">A</td>
-              <td class="text-center">12</td>
-              <td class="text-right">369</td>
-            </tr>
-            <tr>
-              <td class="text-left"></td>
-              <td class="text-center">42</td>
-              <td class="text-right"></td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">B</td>
-              <td class="text-center">84</td>
-              <td class="text-right">530</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">C</td>
-              <td class="text-center">30</td>
-              <td class="text-right">845</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">D</td>
-              <td class="text-center">80</td>
-              <td class="text-right">453</td>
-            </tr>
-          </tbody>
-          <tfoot class="q-pa-ms text-h6">
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">1</th>
-              <th class="text-right">03183</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">2</th>
-              <th class="text-right">54199</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">3</th>
-              <th class="text-right">56642</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">4</th>
-              <th class="text-right">75533</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">5</th>
-              <th class="text-right">03834</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">6</th>
-              <th class="text-right">26147</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">7</th>
-              <th class="text-right">45096</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">8</th>
-              <th class="text-right">47726</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">9</th>
-              <th class="text-right">87479</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">10</th>
-              <th class="text-right">9488</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">11</th>
-              <th class="text-right">0832</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">12</th>
-              <th class="text-right">9749</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">13</th>
-              <th class="text-right">5094</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">14</th>
-              <th class="text-right">9987</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">15</th>
-              <th class="text-right">3223</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">16</th>
-              <th class="text-right">2746</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">17</th>
-              <th class="text-right">0376</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">18</th>
-              <th class="text-right">5554</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">19</th>
-              <th class="text-right">9463</th>
-            </tr>
-          </tfoot>
-        </q-markup-table>
-      </div>
-      <div class="q-pa-sm" style="max-width: 400px">
-        <q-markup-table flat bordered>
-          <thead class="bg-primary q-pa-sm text-h6">
-            <tr>
-              <th class="text-left" style="color: white">ឆ្នោត-មីងណាម</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: white">យប់7:15</th>
-            </tr>
-          </thead>
-          <thead class="q-pa-sm text-h6">
-            <tr>
-              <th class="text-left" style="color: darkblue">ចេញថ្ងៃ</th>
-              <th class="text-center"></th>
-              <th class="text-right" style="color: darkred">29-01-2026</th>
-            </tr>
-          </thead>
-          <tbody class="q-pa-sm text-h5">
-            <tr>
-              <td class="text-left"></td>
-              <td class="text-center">12</td>
-              <td class="text-right">632</td>
-            </tr>
-            <tr>
-              <td class="text-left"></td>
-              <td class="text-center">70</td>
-              <td class="text-right">813</td>
-            </tr>
-            <tr>
-              <td class="text-left text-h2" style="color: darkblue">A</td>
-              <td class="text-center">14</td>
-              <td class="text-right">950</td>
-            </tr>
-            <tr>
-              <td class="text-left"></td>
-              <td class="text-center">71</td>
-              <td class="text-right"></td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">B</td>
-              <td class="text-center">15</td>
-              <td class="text-right">734</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">C</td>
-              <td class="text-center">34</td>
-              <td class="text-right">157</td>
-            </tr>
-            <tr>
-              <td class="text-left" style="color: darkblue">D</td>
-              <td class="text-center">14</td>
-              <td class="text-right">573</td>
-            </tr>
-          </tbody>
-          <tfoot class="q-pa-ms text-h6">
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">1</th>
-              <th class="text-right">74946</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">2</th>
-              <th class="text-right">85005</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">3</th>
-              <th class="text-right">65502</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">4</th>
-              <th class="text-right">41712</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">5</th>
-              <th class="text-right">99549</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">6</th>
-              <th class="text-right">14295</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">7</th>
-              <th class="text-right">11422</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">8</th>
-              <th class="text-right">74774</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">9</th>
-              <th class="text-right">49367</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">10</th>
-              <th class="text-right">5210</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">11</th>
-              <th class="text-right">5306</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">12</th>
-              <th class="text-right">1098</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">13</th>
-              <th class="text-right">5547</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">14</th>
-              <th class="text-right">1569</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">15</th>
-              <th class="text-right">2014</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">16</th>
-              <th class="text-right">9443</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">17</th>
-              <th class="text-right">3596</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">18</th>
-              <th class="text-right">3539</th>
-            </tr>
-            <tr>
-              <th class="text-left"></th>
-              <th class="text-right">19</th>
-              <th class="text-right">4384</th>
+              <td colspan="2">15</td>
+              <td>26008</td>
             </tr>
           </tfoot>
         </q-markup-table>
@@ -733,6 +168,52 @@ export default {
 </script>
 <script setup>
 import { ref } from 'vue'
+
 const date = ref('date')
-const tab = ref('mails')
+const tab = ref('all')
+
+const times = ref([
+  {
+    id: 1,
+    code: 'mails',
+    name: 'ទាំងអស់',
+    icon: 'mails',
+    date: '06-04-2026',
+  },
+  {
+    id: 2,
+    code: 'alarm1',
+    name: 'ព្រឹក 10:15',
+    icon: 'alarm',
+    date: '06-04-2026',
+  },
+  {
+    id: 3,
+    code: 'alarm2',
+    name: 'ថ្ងៃ 1:45',
+    icon: 'alarm',
+    date: '06-04-2026',
+  },
+  {
+    id: 4,
+    code: 'alarm3',
+    name: 'ល្ងាច 3:45',
+    icon: 'alarm',
+    date: '06-04-2026',
+  },
+  {
+    id: 5,
+    code: 'alarm4',
+    name: 'យប់ 5:45',
+    icon: 'alarm',
+    date: '06-04-2026',
+  },
+  {
+    id: 6,
+    code: 'alarm5',
+    name: 'យប់ 7:15',
+    icon: 'alarm',
+    date: '06-04-2026',
+  },
+])
 </script>

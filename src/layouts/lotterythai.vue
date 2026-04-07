@@ -26,8 +26,9 @@
         </q-input>
       </div>
       <div class="q-gutter-y-md q-pa-sm" style="max-width: 400px">
-        <q-tabs v-model="tab" narrow-indicator dense>
+        <q-tabs v-model="tab" narrow-indicator dense class="bg-primary">
           <q-tab
+            class="text-white"
             v-for="time in times"
             :key="time.id"
             :name="time.code"
@@ -132,12 +133,12 @@ const times = ref([
         prizes: [
           {
             prizeId: 1,
-            prizeName: 'រង្វាន់ទី១',
+            prizeName: 'រង្វាន់ទី1',
             prize: '9000$',
             values: [
               {
                 index: 1,
-                value: '12345',
+                value: '123457',
               },
             ],
           },
@@ -148,18 +149,18 @@ const times = ref([
   {
     id: 2,
     code: 'alarms',
-    name: 'ថៃ3:45',
+    name: 'ថៃ 3:45',
     icon: 'alarms',
     date: '4-04-2026',
     separator: false,
     posts: [
       {
         id: 2,
-        name: 'ប៉ុស្តិ៍ A',
+        name: 'ប៉ុស្តិ៍ B',
         prizes: [
           {
             prizeId: 2,
-            prizeName: 'រង្វាន់ទី១',
+            prizeName: 'រង្វាន់ទី2',
             prize: '9000$',
             values: [
               {
@@ -175,18 +176,18 @@ const times = ref([
   {
     id: 3,
     code: 'alarms3',
-    name: 'ថៃ4:45',
+    name: 'ថៃ 4:45',
     icon: 'alarms',
     date: '4-04-2026',
     separator: false,
     posts: [
       {
         id: 3,
-        name: 'ប៉ុស្តិ៍ A',
+        name: 'ប៉ុស្តិ៍ C',
         prizes: [
           {
             prizeId: 3,
-            prizeName: 'រង្វាន់ទី១',
+            prizeName: 'រង្វាន់ទី3',
             prize: '1000$',
             values: [
               {
