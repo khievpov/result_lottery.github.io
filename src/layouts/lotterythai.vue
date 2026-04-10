@@ -1,10 +1,10 @@
 <template>
   <q-card>
     <q-card-section>
-      <div class="q-pa-sm text-h6" style="max-width: 400px">
+      <div class="q-pa-sm text-h6" style="max-width: 400px" v-for="item in items">
         លទ្ឋផល
         <span style="color: darkred">ឆ្នោតថៃ</span>
-        សម្រាប់ថ្ងៃទី
+        សម្រាប់ថ្ងៃទី {{ item.date }}
       </div>
       <div class="absolute-top-right q-ma-md q-pa-md">
         <q-spinner-radio color="red" size="2em" />
@@ -26,9 +26,8 @@
         </q-input>
       </div>
       <div class="q-gutter-y-md q-pa-sm" style="max-width: 400px">
-        <q-tabs v-model="tab" narrow-indicator dense class="bg-primary">
+        <q-tabs v-model="tab" narrow-indicator dense>
           <q-tab
-            class="text-white"
             v-for="time in times"
             :key="time.id"
             :name="time.code"
@@ -46,63 +45,41 @@
         >
           <thead class="bg-primary q-pa-sm text-h6">
             <tr>
-              <th style="color: white" colspan="3">ឆ្នោតថៃ</th>
+              <th style="color: white" colspan="9">ឆ្នោតថៃ</th>
               <th style="color: white">{{ time.name }}</th>
             </tr>
           </thead>
           <thead class="q-pa-sm text-h4">
             <tr>
-              <th style="color: darkblue" colspan="3">ចេញថ្ងៃ</th>
+              <th style="color: darkblue" colspan="9">ចេញថ្ងៃ</th>
               <th style="color: darkred">{{ time.date }}</th>
             </tr>
           </thead>
-          <tbody class="q-pa-sm text-h4">
-            <tr>
-              <td style="color: darkblue" colspan="2">A</td>
-              <td>57</td>
-              <td>168</td>
-            </tr>
-            <tr>
-              <td style="color: darkblue" colspan="2">B</td>
-              <td>68</td>
-              <td>169</td>
-            </tr>
-            <tr>
-              <td style="color: darkblue" colspan="2">C</td>
+
+          <template v-for="post in time.posts || []" :key="post.id">
+            <tr class="bg-primary text-h6">
               <td>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-              </td>
-              <td>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
+                <span style="color: white"> {{ post.name }}</span>
               </td>
             </tr>
-            <tr>
-              <td style="color: darkblue" colspan="2">D</td>
-              <td>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-              </td>
-              <td>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-                <q-spinner-ios color="primary" size="1em" />
-                <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
-              </td>
-            </tr>
-          </tbody>
-          <q-separator :key="'time.id' + index" v-if="time.separator" />
+            <tbody>
+              <tr v-for="prize in post.prizes || []" :key="prize.prizeId">
+                <td colspan="8">
+                  {{ prize.prizeName }}
+                </td>
+                <td>
+                  {{ prize.prize }}
+                </td>
+                <td>
+                  <template v-for="value in prize.values || []" :key="value.index">
+                    លទ្ធផលឆ្នោត <br />
+                    {{ value.value }}
+                  </template>
+                </td>
+              </tr>
+            </tbody>
+          </template>
+          <q-separator :key="'sep' + index" v-if="time.separator" />
         </q-markup-table>
       </div>
     </q-card-section>
@@ -116,6 +93,12 @@ export default {
 <script setup>
 import { ref } from 'vue'
 const date = ref('date')
+const items = ref([
+  {
+    id: 1,
+    date: '4-04-2026',
+  },
+])
 const tab = ref('all')
 
 const times = ref([
@@ -124,7 +107,7 @@ const times = ref([
     code: 'mails',
     name: 'ទាំងអស់',
     icon: 'mails',
-    date: '4-04-2026',
+    date: '6-04-2026',
     separator: true,
     posts: [
       {
@@ -133,12 +116,12 @@ const times = ref([
         prizes: [
           {
             prizeId: 1,
-            prizeName: 'រង្វាន់ទី1',
-            prize: '9000$',
+            prizeName: 'រង្វាន់ទី 1',
+            prize: '9900$',
             values: [
               {
                 index: 1,
-                value: '123457',
+                value: '189867',
               },
             ],
           },
@@ -160,8 +143,8 @@ const times = ref([
         prizes: [
           {
             prizeId: 2,
-            prizeName: 'រង្វាន់ទី2',
-            prize: '9000$',
+            prizeName: 'រង្វាន់ទី 2',
+            prize: '8800$',
             values: [
               {
                 index: 1,
@@ -187,12 +170,12 @@ const times = ref([
         prizes: [
           {
             prizeId: 3,
-            prizeName: 'រង្វាន់ទី3',
-            prize: '1000$',
+            prizeName: 'រង្វាន់ទី 3',
+            prize: '2000$',
             values: [
               {
                 index: 1,
-                value: '123456',
+                value: '897654',
               },
             ],
           },

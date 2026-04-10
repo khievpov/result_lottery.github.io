@@ -10,39 +10,33 @@ const tab = ref('all')
 const times = ref([
   {
     id: 1,
-    code: 'mails',
-    name: 'ទាំងអស់',
-    icon: 'mails',
+    code: '5D ម៉ោង 10:00AM',
+    name: 'alarm1',
+    posts: [
+      {
+        id: 1,
+        name: 'ប៉ុស្តិ៍ A',
+        prizes: [
+          {
+            prizeId: 1,
+            prizeName: '"រង្វាន់ធំ5D"',
+            prize: '5000',
+            values: [
+              {
+                index: 1,
+                value: '44715',
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
+])
+const items = ref([
   {
-    id: 2,
-    code: 'alarm1',
-    name: '5D ម៉ោង 10:00AM',
-    icon: 'alarms',
-  },
-  {
-    id: 3,
-    code: 'alarm2',
-    name: '5D ម៉ោង 12:00PM',
-    icon: 'alarms',
-  },
-  {
-    id: 4,
-    code: 'alarm3',
-    name: '5D ម៉ោង 03:00PM',
-    icon: 'alarms',
-  },
-  {
-    id: 5,
-    code: 'alarm4',
-    name: '5D ម៉ោង 05:00PM',
-    icon: 'alarms',
-  },
-  {
-    id: 6,
-    code: 'alarm5',
-    name: '5D ម៉ោង 07:00PM',
-    icon: 'alarms',
+    id: 1,
+    date: '2-04-2026',
   },
 ])
 
@@ -73,16 +67,16 @@ onMounted(async () => {
         </q-tabs>
       </div>
 
-      <div class="q-pa-md text-h6">
+      <div class="q-pa-md text-h6" v-for="item in items">
         លទ្ឋផល
         <span style="color: darkred">ឆ្នោត</span>
-        សម្រាប់ថ្ងៃទី
+        សម្រាប់ថ្ងៃទី {{ item.date }}
       </div>
 
       <q-markup-table flat bordered>
         <q-tab-panel
           v-model="tab"
-          name="mails"
+          name="alarm1"
           v-for="time in times.filter((x) => x.code == tab || tab == 'all')"
           :key="time.id"
         >
