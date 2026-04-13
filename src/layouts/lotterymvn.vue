@@ -167,8 +167,10 @@ export default {
 }
 </script>
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import { useserver } from 'src/stores/server'
 
+const store = useserver()
 const date = ref('date')
 const tab = ref('all')
 
@@ -216,4 +218,10 @@ const times = ref([
     date: '06-04-2026',
   },
 ])
+onMounted(async () => {
+  await store.fetchlotterymvn().then((rs) => {
+    times.value = store.Lotterymvn[0].times
+    console.log(times.value)
+  })
+})
 </script>
