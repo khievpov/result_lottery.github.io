@@ -1,0 +1,1 @@
+import{E as e,M as t,N as n,m as r}from"./runtime-core.esm-bundler-Ddrbm2qK.js";import{t as i}from"./resultlottery-BJPu7oiu.js";var a={__name:`PageLayout`,setup(a){let o=i();return e(()=>{AOS.init({once:!0}),o.init()}),(e,i)=>{let a=n(`router-view`);return t(e.$slots,`default`,{},()=>[r(a)])}}};export{a as default};

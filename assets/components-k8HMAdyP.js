@@ -1,0 +1,1 @@
+import{d as e,k as t}from"./runtime-core.esm-bundler-Ddrbm2qK.js";import{v as n}from"./index-D9wAkDjW.js";var r={name:`home-Page`},i={class:`home-page`};function a(n,r,a,o,s,c){return t(),e(`div`,i)}var o=n(r,[[`render`,a]]);export{o as default};
