@@ -8,6 +8,4 @@ export default {
 }
 </script>
 
-<script setup>
-//import { resultlotteryStore } from 'stores/resultlottery'
-</script>
+<script setup></script>
