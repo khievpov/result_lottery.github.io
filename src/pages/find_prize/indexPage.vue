@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
 import { route } from 'quasar/wrappers'
 import lottery5D from './lottery5D.vue'
 import { api } from 'src/boot/axios'
@@ -41,4 +41,4 @@ const time = ref({
   <div v-if="!isloading">
     <lottery5D :time="time" v-if="time?.digit == 5" />
   </div>
-</template>
+</template> -->

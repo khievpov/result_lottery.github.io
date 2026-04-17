@@ -5,13 +5,6 @@ import { api } from 'src/boot/axios'
 export const useresultlotteryStore = defineStore('resultLottery', {
   state: () => ({
     search: {
-      date: date.formatDate(new Date(), 'YYYY/MM/DD'),
-      typeId: null,
-    },
-    today: date.formatDate(new Date(), 'YYYY/MM/DD'),
-    lottery5d: {},
-    lottoRunner: null,
-    timedPrizes: {
       date: date.formatDate(new Date()),
       time: '00:00 AM',
       digit: 5,
@@ -63,7 +56,7 @@ export const useresultlotteryStore = defineStore('resultLottery', {
 
       return result.time?.some((time) => time.isRunning) || false
     },
-    async getresultLotteryResults() {
+    async fetchresultLotteryResults() {
       try {
         return api
           .get('https://lotteryk38.com/api/site/Lottery/results?date=2026%2F02%2F28&typeId=1')
