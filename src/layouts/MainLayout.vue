@@ -52,10 +52,14 @@
 
     <q-page-container>
       <router-view />
+      <div class="row q-col-gutter-md">
+        <div class="col-12 col-sm-6 col-md-4">
+          <q-card class="q-pa-ms"></q-card>
+        </div>
+      </div>
       <q-page-scroller position="bottom-right" :scroll-offset="150" :offset="[18, 18]">
         <q-btn fab icon="keyboard_arrow_up" color="primary" />
       </q-page-scroller>
-      <!-- <lotteryvnPage /> -->
     </q-page-container>
   </q-layout>
 </template>
