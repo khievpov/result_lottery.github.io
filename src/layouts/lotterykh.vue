@@ -56,38 +56,20 @@
             <thead class="q-pa-sm text-h6">
               <tr>
                 <th style="color: darkblue" colspan="3">ចេញថ្ងៃ</th>
-                <th style="color: darkred">{{ time.date }}</th>
+                <th style="color: darkred">{{ time.selectedDate }}</th>
               </tr>
             </thead>
-            <!-- <template v-for="post in time.posts || []" :key="post.id">
-              <tr class="bg-primary text-h6">
-                <td>
-                  <span style="color: white"> ប៉ុស្តិ៍ {{ post.name }}</span>
-                </td>
-              </tr>
-            </template> -->
-            <tbody class="q-pa-sm text-h5">
-              <tr>
-                <td style="color: darkblue" colspan="2">A</td>
-                <td>57</td>
-                <td>666</td>
-              </tr>
-              <tr>
-                <td style="color: darkblue" colspan="2">B</td>
-                <td>46</td>
-                <td>728</td>
-              </tr>
-              <tr>
-                <td style="color: darkblue" colspan="2">C</td>
-                <td>41</td>
-                <td>166</td>
-              </tr>
-              <tr>
-                <td style="color: darkblue" colspan="2">D</td>
-                <td>91</td>
-                <td>440</td>
-              </tr>
-            </tbody>
+            <template v-for="post in time.posts || []" :key="post.id">
+              <tbody class="q-pa-sm text-h4">
+                <tr>
+                  <td colspan="2">
+                    <span style="color: darkblue"> ប៉ុស្តិ៍ {{ post.name }}</span>
+                  </td>
+                  <td>{{ post.value }}</td>
+                  <td>{{ post.prize }}</td>
+                </tr>
+              </tbody>
+            </template>
           </q-markup-table>
         </div>
       </q-card-section>
@@ -104,21 +86,7 @@ export default {
 import { ref, onMounted } from 'vue'
 
 const selectedDate = ref(new Date().toISOString().slice(0, 10))
-const rows = ref([])
 
-const loadDate = async (date) => {
-  console.log('Loading data for date:', date)
-  // Simulate an API call with a timeout
-  setTimeout(() => {
-    rows.value = [
-      { id: 1, name: 'A', value: '57', prize: '666' },
-      { id: 2, name: 'B', value: '46', prize: '728' },
-      { id: 3, name: 'C', value: '41', prize: '166' },
-      { id: 4, name: 'D', value: '91', prize: '440' },
-    ]
-    console.log('Data loaded for date:', date, rows.value)
-  }, 1000)
-}
 onMounted(() => {
   console.log('Component mounted with initial date:', selectedDate.value)
 })
@@ -131,7 +99,6 @@ const times = ref([
     code: 'mails',
     name: 'ទាំងអស់',
     icon: 'mails',
-    date: 'selectedDate.value',
   },
 
   {
@@ -139,35 +106,69 @@ const times = ref([
     code: 'alarm1',
     name: 'ខ្មែរ 10:35',
     icon: 'alarm',
-    date: '06-04-2026',
+
+    posts: [
+      { id: 1, name: 'A', value: '09', prize: '998' },
+      { id: 2, name: 'B', value: '86', prize: '728' },
+      { id: 3, name: 'C', value: '87', prize: '2456' },
+      { id: 4, name: 'D', value: '90', prize: '4998' },
+    ],
   },
+
   {
     id: 3,
     code: 'alarm2',
     name: 'ខ្មែរ 13:00',
     icon: 'alarm',
-    date: '06-04-2026',
+
+    posts: [
+      { id: 1, name: 'A', value: '79', prize: '96698' },
+      { id: 2, name: 'B', value: '46', prize: '728' },
+      { id: 3, name: 'C', value: '87', prize: '2456' },
+      { id: 4, name: 'D', value: '94', prize: '4998' },
+    ],
   },
+
   {
     id: 4,
     code: 'alarm3',
     name: 'ខ្មែរ 15:45',
     icon: 'alarm',
-    date: '06-04-2026',
+
+    posts: [
+      { id: 1, name: 'A', value: '34', prize: '9985' },
+      { id: 2, name: 'B', value: '46', prize: '728' },
+      { id: 3, name: 'C', value: '87', prize: '2456' },
+      { id: 4, name: 'D', value: '23', prize: '49989' },
+    ],
   },
+
   {
     id: 5,
     code: 'alarm4',
     name: 'ខ្មែរ 18:00',
     icon: 'alarm',
-    date: '06-04-2026',
+
+    posts: [
+      { id: 1, name: 'A', value: '68', prize: '998' },
+      { id: 2, name: 'B', value: '46', prize: '728' },
+      { id: 3, name: 'C', value: '87', prize: '2456' },
+      { id: 4, name: 'D', value: '43', prize: '4985' },
+    ],
   },
+
   {
     id: 6,
     code: 'alarm5',
     name: 'ខ្មែរ 19:45',
     icon: 'alarm',
-    date: '06-04-2026',
+
+    posts: [
+      { id: 1, name: 'A', value: '11', prize: '9984' },
+      { id: 2, name: 'B', value: '46', prize: '728' },
+      { id: 3, name: 'C', value: '87', prize: '2456' },
+      { id: 4, name: 'D', value: '68', prize: '49981' },
+    ],
   },
 ])
 </script>

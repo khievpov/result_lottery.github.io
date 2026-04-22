@@ -8,12 +8,6 @@ const prizes = ref([])
 const posts = ref([])
 const tab = ref('all')
 const times = ref([])
-const items = ref([
-  {
-    id: 1,
-    date: '2-04-2026',
-  },
-])
 
 onMounted(async () => {
   await store.fetchmobileapp().then((rs) => {
@@ -31,6 +25,11 @@ onMounted(async () => {
     <q-card>
       <q-card-section>
         <div class="q-gutter-y-md q-pa-md" style="max-width: 400px">
+          លទ្ឋផល
+          <span style="color: darkred">ឆ្នោត-5D</span>
+          សម្រាប់ថ្ងៃទី
+          <span style="color: darkblue">{{ times[0]?.date }}</span>
+
           <q-tabs v-model="tab" narrow-indicator dense class="text-primary">
             <q-tab name="mails" icon="mails" label="ទាំងអស់" />
             <q-tab name="alarm1" icon="alarms" label="5D ម៉ោង 10:00AM" />
@@ -41,12 +40,6 @@ onMounted(async () => {
             <q-tab name="alarm4" icon="alarms" label="5D ម៉ោង 05:00PM" />
             <q-tab name="alarm5" icon="alarms" label="5D ម៉ោង 07:00PM" />
           </q-tabs>
-        </div>
-
-        <div class="q-pa-md text-h6" v-for="item in items">
-          លទ្ឋផល
-          <span style="color: darkred">ឆ្នោត</span>
-          សម្រាប់ថ្ងៃទី {{ item.date }}
         </div>
 
         <q-markup-table flat bordered>

@@ -1,10 +1,10 @@
 <template>
   <q-card>
     <q-card-section>
-      <div class="q-pa-sm text-h6" style="max-width: 400px" v-for="item in items">
+      <div class="q-pa-sm text-h6" style="max-width: 400px">
         លទ្ឋផល
         <span style="color: darkred">ឆ្នោតថៃ</span>
-        សម្រាប់ថ្ងៃទី {{ item.date }}
+        សម្រាប់ថ្ងៃទី
       </div>
       <div class="absolute-top-right q-ma-md q-pa-md">
         <q-spinner-radio color="red" size="2em" />
@@ -93,12 +93,7 @@ export default {
 <script setup>
 import { ref } from 'vue'
 const date = ref('date')
-const items = ref([
-  {
-    id: 1,
-    date: '4-04-2026',
-  },
-])
+
 const tab = ref('all')
 
 const times = ref([
