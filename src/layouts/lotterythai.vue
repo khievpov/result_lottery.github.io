@@ -29,6 +29,7 @@
         <div class="q-gutter-y-md q-pa-sm" style="max-width: 400px">
           <q-tabs v-model="tab" narrow-indicator dense>
             <q-tab
+              class="text-primary"
               v-for="time in times"
               :key="time.id"
               :name="time.code"

@@ -53,110 +53,26 @@
                 <th style="color: darkred">{{ time.date }}</th>
               </tr>
             </thead>
-            <tbody class="q-pa-sm text-h5">
-              <tr>
-                <td style="color: darkblue" colspan="2">A</td>
-                <td>20</td>
-                <td>180</td>
-              </tr>
-              <tr>
-                <td style="color: darkblue" colspan="2">B</td>
-                <td>83</td>
-                <td>111</td>
-              </tr>
-              <tr>
-                <td style="color: darkblue" colspan="2">C</td>
-                <td>11</td>
-                <td>831</td>
-              </tr>
-              <tr>
-                <td style="color: darkblue" colspan="2">D</td>
-                <td>81</td>
-                <td>331</td>
-              </tr>
-              <tr>
-                <td style="color: darkblue" colspan="2">F</td>
-                <td>57</td>
-                <td>943</td>
-              </tr>
-              <tr>
-                <td style="color: darkblue" colspan="2">I</td>
-                <td>57</td>
-                <td>943</td>
-              </tr>
-              <tr>
-                <td style="color: darkblue" colspan="2">N</td>
-                <td>80</td>
-                <td>906</td>
-              </tr>
-              <tr>
-                <td style="color: darkblue" colspan="2">K</td>
-                <td>62</td>
-                <td>462</td>
-              </tr>
-            </tbody>
-            <tfoot class="q-pa-ms text-h5">
-              <tr>
-                <td colspan="2">1</td>
-                <td>1412</td>
-              </tr>
-              <tr>
-                <td colspan="2">2</td>
-                <td>8086</td>
-              </tr>
-              <tr>
-                <td colspan="2">3</td>
-                <td>7271</td>
-              </tr>
-              <tr>
-                <td colspan="2">4</td>
-                <td>6667</td>
-              </tr>
-              <tr>
-                <td colspan="2">5</td>
-                <td>64498</td>
-              </tr>
-              <tr>
-                <td colspan="2">6</td>
-                <td>65882</td>
-              </tr>
-              <tr>
-                <td colspan="2">7</td>
-                <td>89492</td>
-              </tr>
-              <tr>
-                <td colspan="2">8</td>
-                <td>57156</td>
-              </tr>
-              <tr>
-                <td colspan="2">9</td>
-                <td>00989</td>
-              </tr>
-              <tr>
-                <td colspan="2">10</td>
-                <td>49158</td>
-              </tr>
-              <tr>
-                <td colspan="2">11</td>
-                <td>85259</td>
-              </tr>
-              <tr>
-                <td colspan="2">12</td>
-                <td>66334</td>
-              </tr>
-              <tr>
-                <td colspan="2">13</td>
-                <td>84631</td>
-              </tr>
-              <tr>
-                <td colspan="2">14</td>
-                <td>56143</td>
-              </tr>
-              <tr>
-                <td colspan="2">15</td>
-                <td>84622</td>
-              </tr>
-            </tfoot>
+            <template v-for="post in time.posts || []" :key="post.id">
+              <tbody class="q-pa-sm text-h4">
+                <tr>
+                  <td colspan="2">
+                    <span style="color: darkblue">{{ post.name }}</span>
+                  </td>
+                  <td>{{ post.value }}</td>
+                  <td>{{ post.prize }}</td>
+                </tr>
+              </tbody>
+            </template>
+
+            <template v-for="number in time.numbers || []" :key="number.id">
+              <tbody class="q-pa-ms text-h5">
+                <tr>
+                  <td colspan="2">{{ number.name }}</td>
+                  <td>{{ number.result }}</td>
+                </tr>
+              </tbody>
+            </template>
           </q-markup-table>
         </div>
       </q-card-section>
@@ -189,6 +105,33 @@ const times = ref([
     name: 'ល្ងាច 4:30',
     icon: 'alarm',
     date: '06-04-2026',
+    posts: [
+      { id: 1, name: 'ប៉ុស្តិ៍ A', value: '20', prize: '168' },
+      { id: 2, name: 'ប៉ុស្តិ៍ B', value: '83', prize: '160' },
+      { id: 3, name: 'ប៉ុស្តិ៍ C', value: '11', prize: '118' },
+      { id: 4, name: 'ប៉ុស្តិ៍ D', value: '81', prize: '188' },
+      { id: 5, name: 'ប៉ុស្តិ៍ F', value: '57', prize: '168' },
+      { id: 6, name: 'ប៉ុស្តិ៍ I', value: '57', prize: '168' },
+      { id: 7, name: 'ប៉ុស្តិ៍ N', value: '80', prize: '168' },
+      { id: 8, name: 'ប៉ុស្តិ៍ K', value: '62', prize: '268' },
+    ],
+    numbers: [
+      { id: 1, name: '1', result: '1412' },
+      { id: 2, name: '2', result: '8086' },
+      { id: 3, name: '3', result: '7271' },
+      { id: 4, name: '4', result: '6667' },
+      { id: 5, name: '5', result: '64498' },
+      { id: 6, name: '6', result: '65882' },
+      { id: 7, name: '7', result: '89492' },
+      { id: 8, name: '8', result: '57156' },
+      { id: 9, name: '9', result: '00989' },
+      { id: 10, name: '10', result: '49158' },
+      { id: 11, name: '11', result: '85259' },
+      { id: 12, name: '12', result: '66334' },
+      { id: 13, name: '13', result: '84631' },
+      { id: 14, name: '14', result: '56143' },
+      { id: 15, name: '15', result: '84622' },
+    ],
   },
   {
     id: 3,
@@ -196,6 +139,36 @@ const times = ref([
     name: 'យប់ 6:30',
     icon: 'alarm',
     date: '06-04-2026',
+    posts: [
+      { id: 1, value: '11', prize: '268' },
+      { id: 2, value: '83', prize: '150' },
+      { id: 3, name: 'ប៉ុស្តិ៍ A', value: '16', prize: '118' },
+      { id: 4, value: '81' },
+      { id: 5, name: 'ប៉ុស្តិ៍ B', value: '57', prize: '108' },
+      { id: 6, name: 'ប៉ុស្តិ៍ C', value: '57', prize: '168' },
+      { id: 7, name: 'ប៉ុស្តិ៍ D', value: '80', prize: '138' },
+    ],
+    numbers: [
+      { id: 1, name: '1', result: '9414' },
+      { id: 2, name: '2', result: '8086' },
+      { id: 3, name: '3', result: '7271' },
+      { id: 4, name: '4', result: '6667' },
+      { id: 5, name: '5', result: '64498' },
+      { id: 6, name: '6', result: '65882' },
+      { id: 7, name: '7', result: '89492' },
+      { id: 8, name: '8', result: '571' },
+      { id: 9, name: '9', result: '00989' },
+      { id: 10, name: '10', result: '49158' },
+      { id: 11, name: '11', result: '8559' },
+      { id: 12, name: '12', result: '66334' },
+      { id: 13, name: '13', result: '84631' },
+      { id: 14, name: '14', result: '56143' },
+      { id: 15, name: '15', result: '94625' },
+      { id: 16, name: '16', result: '84622' },
+      { id: 17, name: '17', result: '84622' },
+      { id: 18, name: '18', result: '84622' },
+      { id: 19, name: '19', result: '84622' },
+    ],
   },
 ])
 </script>
