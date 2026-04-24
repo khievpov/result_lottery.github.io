@@ -29,17 +29,8 @@ const routes = [
   },
 
   {
-    path: '/pages/find_prize/users',
-    component: () => import('src/pages/find_prize/UserPage.vue'),
-  },
-  {
     path: '/pages/find_prize/resultlottery/result',
     component: () => import('src/pages/find_prize/indexPage.vue'),
-  },
-
-  {
-    path: '/pages/posts/resultlottery',
-    component: () => import('src/pages/posts/ResultPage.vue'),
   },
 
   {

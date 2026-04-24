@@ -58,105 +58,26 @@
                 <th style="color: darkred">{{ time.date }}</th>
               </tr>
             </thead>
-            <tbody class="q-pa-sm text-h5">
-              <tr>
-                <td style="color: darkblue" colspan="2">A</td>
-                <td>11</td>
-                <td>098</td>
-              </tr>
-              <tr>
-                <td style="color: darkblue" colspan="2">B</td>
-                <td>53</td>
-                <td>140</td>
-              </tr>
-              <tr>
-                <td style="color: darkblue" colspan="2">C</td>
-                <td>40</td>
-                <td>531</td>
-              </tr>
-              <tr>
-                <td style="color: darkblue" colspan="2">D</td>
-                <td>50</td>
-                <td>314</td>
-              </tr>
-              <tr>
-                <td style="color: darkblue" colspan="2">F</td>
-                <td>18</td>
-                <td>475</td>
-              </tr>
-              <tr>
-                <td style="color: darkblue" colspan="2">I</td>
-                <td>91</td>
-                <td>575</td>
-              </tr>
-              <tr>
-                <td style="color: darkblue" colspan="2">N</td>
-                <td>24</td>
-                <td>166</td>
-              </tr>
-            </tbody>
-            <tfoot class="q-pa-ms text-h6">
-              <tr>
-                <td colspan="2">1</td>
-                <td>6376</td>
-              </tr>
-              <tr>
-                <td colspan="2">2</td>
-                <td>3540</td>
-              </tr>
-              <tr>
-                <td colspan="2">3</td>
-                <td>3616</td>
-              </tr>
-              <tr>
-                <td colspan="2">4</td>
-                <td>13353</td>
-              </tr>
-              <tr>
-                <td colspan="2">5</td>
-                <td>69894</td>
-              </tr>
-              <tr>
-                <td colspan="2">6</td>
-                <td>02219</td>
-              </tr>
-              <tr>
-                <td colspan="2">7</td>
-                <td>48873</td>
-              </tr>
-              <tr>
-                <td colspan="2">8</td>
-                <td>10833</td>
-              </tr>
-              <tr>
-                <td colspan="2">9</td>
-                <td>60607</td>
-              </tr>
-              <tr>
-                <td colspan="2">10</td>
-                <td>00593</td>
-              </tr>
-              <tr>
-                <td colspan="2">11</td>
-                <td>77543</td>
-              </tr>
-              <tr>
-                <td colspan="2">12</td>
-                <td>3039</td>
-              </tr>
-              <tr>
-                <td colspan="2">13</td>
-                <td>59838</td>
-              </tr>
-              <tr>
-                <td colspan="2">14</td>
-                <td>26361</td>
-              </tr>
-              <tr>
-                <td colspan="2">15</td>
-                <td>26008</td>
-              </tr>
-            </tfoot>
+            <template v-for="post in time.posts || []" :key="post.id">
+              <tbody class="q-pa-sm text-h4">
+                <tr>
+                  <td colspan="2">
+                    <span style="color: darkblue">{{ post.name }}</span>
+                  </td>
+                  <td>{{ post.value }}</td>
+                  <td>{{ post.prize }}</td>
+                </tr>
+              </tbody>
+            </template>
+
+            <template v-for="number in time.numbers || []" :key="number.id">
+              <tbody class="q-pa-ms text-h5">
+                <tr>
+                  <td colspan="2">{{ number.name }}</td>
+                  <td>{{ number.result }}</td>
+                </tr>
+              </tbody>
+            </template>
           </q-markup-table>
         </div>
       </q-card-section>
@@ -189,6 +110,32 @@ const times = ref([
     name: 'ព្រឹក 10:15',
     icon: 'alarm',
     date: '06-04-2026',
+    posts: [
+      { id: 1, name: 'ប៉ុស្តិ៍ A', value: '22', prize: '168' },
+      { id: 2, name: 'ប៉ុស្តិ៍ B', value: '32', prize: '160' },
+      { id: 3, name: 'ប៉ុស្តិ៍ C', value: '11', prize: '118' },
+      { id: 4, name: 'ប៉ុស្តិ៍ D', value: '81', prize: '188' },
+      { id: 5, name: 'ប៉ុស្តិ៍ F', value: '57', prize: '168' },
+      { id: 6, name: 'ប៉ុស្តិ៍ I', value: '57', prize: '168' },
+      { id: 7, name: 'ប៉ុស្តិ៍ N', value: '88', prize: '168' },
+    ],
+    numbers: [
+      { id: 1, name: '1', result: '1412' },
+      { id: 2, name: '2', result: '8086' },
+      { id: 3, name: '3', result: '7271' },
+      { id: 4, name: '4', result: '6667' },
+      { id: 5, name: '5', result: '64498' },
+      { id: 6, name: '6', result: '65882' },
+      { id: 7, name: '7', result: '89492' },
+      { id: 8, name: '8', result: '57156' },
+      { id: 9, name: '9', result: '00989' },
+      { id: 10, name: '10', result: '49158' },
+      { id: 11, name: '11', result: '85259' },
+      { id: 12, name: '12', result: '66334' },
+      { id: 13, name: '13', result: '84631' },
+      { id: 14, name: '14', result: '56143' },
+      { id: 15, name: '15', result: '84622' },
+    ],
   },
   {
     id: 3,
@@ -196,6 +143,29 @@ const times = ref([
     name: 'ថ្ងៃ 1:45',
     icon: 'alarm',
     date: '06-04-2026',
+    posts: [
+      { id: 1, name: 'ប៉ុស្តិ៍ A', value: '20', prize: '168' },
+      { id: 2, name: 'ប៉ុស្តិ៍ B', value: '83', prize: '160' },
+      { id: 3, name: 'ប៉ុស្តិ៍ C', value: '11', prize: '118' },
+      { id: 4, name: 'ប៉ុស្តិ៍ D', value: '81', prize: '188' },
+      { id: 5, name: 'ប៉ុស្តិ៍ F', value: '57', prize: '168' },
+      { id: 6, name: 'ប៉ុស្តិ៍ I', value: '57', prize: '168' },
+      { id: 7, name: 'ប៉ុស្តិ៍ N', value: '80', prize: '168' },
+    ],
+    numbers: [
+      { id: 1, name: '1', result: '1412' },
+      { id: 2, name: '2', result: '8086' },
+      { id: 3, name: '3', result: '7271' },
+      { id: 4, name: '4', result: '6667' },
+      { id: 5, name: '5', result: '64498' },
+      { id: 6, name: '6', result: '65882' },
+      { id: 7, name: '7', result: '89492' },
+      { id: 8, name: '8', result: '57156' },
+      { id: 9, name: '9', result: '00989' },
+      { id: 10, name: '10', result: '49158' },
+      { id: 11, name: '11', result: '85259' },
+      { id: 12, name: '12', result: '663' },
+    ],
   },
   {
     id: 4,
@@ -203,6 +173,32 @@ const times = ref([
     name: 'ល្ងាច 3:45',
     icon: 'alarm',
     date: '06-04-2026',
+    posts: [
+      { id: 1, name: 'ប៉ុស្តិ៍ A', value: '60', prize: '168' },
+      { id: 2, name: 'ប៉ុស្តិ៍ B', value: '93', prize: '160' },
+      { id: 3, name: 'ប៉ុស្តិ៍ C', value: '11', prize: '118' },
+      { id: 4, name: 'ប៉ុស្តិ៍ D', value: '81', prize: '188' },
+      { id: 5, name: 'ប៉ុស្តិ៍ F', value: '57', prize: '168' },
+      { id: 6, name: 'ប៉ុស្តិ៍ I', value: '57', prize: '168' },
+      { id: 7, name: 'ប៉ុស្តិ៍ N', value: '45', prize: '168' },
+    ],
+    numbers: [
+      { id: 1, name: '1', result: '8412' },
+      { id: 2, name: '2', result: '8086' },
+      { id: 3, name: '3', result: '7271' },
+      { id: 4, name: '4', result: '6667' },
+      { id: 5, name: '5', result: '64498' },
+      { id: 6, name: '6', result: '65882' },
+      { id: 7, name: '7', result: '89492' },
+      { id: 8, name: '8', result: '57156' },
+      { id: 9, name: '9', result: '00989' },
+      { id: 10, name: '10', result: '49158' },
+      { id: 11, name: '11', result: '85259' },
+      { id: 12, name: '12', result: '66334' },
+      { id: 13, name: '13', result: '84631' },
+      { id: 14, name: '14', result: '56143' },
+      { id: 15, name: '15', result: '74622' },
+    ],
   },
   {
     id: 5,
@@ -210,6 +206,36 @@ const times = ref([
     name: 'យប់ 5:45',
     icon: 'alarm',
     date: '06-04-2026',
+    posts: [
+      { id: 1, value: '60', prize: '168' },
+      { id: 2, value: '93', prize: '160' },
+      { id: 3, name: 'ប៉ុស្តិ៍ A', value: '11', prize: '118' },
+      { id: 4, value: '81' },
+      { id: 5, name: 'ប៉ុស្តិ៍ B', value: '57', prize: '168' },
+      { id: 6, name: 'ប៉ុស្តិ៍ C', value: '57', prize: '168' },
+      { id: 7, name: 'ប៉ុស្តិ៍ D', value: '45', prize: '168' },
+    ],
+    numbers: [
+      { id: 1, name: '1', result: '8412' },
+      { id: 2, name: '2', result: '8086' },
+      { id: 3, name: '3', result: '7271' },
+      { id: 4, name: '4', result: '6667' },
+      { id: 5, name: '5', result: '64498' },
+      { id: 6, name: '6', result: '65882' },
+      { id: 7, name: '7', result: '89492' },
+      { id: 8, name: '8', result: '57156' },
+      { id: 9, name: '9', result: '00989' },
+      { id: 10, name: '10', result: '49158' },
+      { id: 11, name: '11', result: '85259' },
+      { id: 12, name: '12', result: '66334' },
+      { id: 13, name: '13', result: '84631' },
+      { id: 14, name: '14', result: '56143' },
+      { id: 15, name: '15', result: '74622' },
+      { id: 16, name: '16', result: '74622' },
+      { id: 17, name: '17', result: '74622' },
+      { id: 18, name: '18', result: '74622' },
+      { id: 19, name: '19', result: '74622' },
+    ],
   },
   {
     id: 6,
@@ -217,6 +243,36 @@ const times = ref([
     name: 'យប់ 7:15',
     icon: 'alarm',
     date: '06-04-2026',
+    posts: [
+      { id: 1, value: '60', prize: '168' },
+      { id: 2, value: '93', prize: '160' },
+      { id: 3, name: 'ប៉ុស្តិ៍ A', value: '11', prize: '118' },
+      { id: 4, value: '81' },
+      { id: 5, name: 'ប៉ុស្តិ៍ B', value: '57', prize: '168' },
+      { id: 6, name: 'ប៉ុស្តិ៍ C', value: '57', prize: '168' },
+      { id: 7, name: 'ប៉ុស្តិ៍ D', value: '45', prize: '168' },
+    ],
+    numbers: [
+      { id: 1, name: '1', result: '8412' },
+      { id: 2, name: '2', result: '8086' },
+      { id: 3, name: '3', result: '7271' },
+      { id: 4, name: '4', result: '6667' },
+      { id: 5, name: '5', result: '64498' },
+      { id: 6, name: '6', result: '65882' },
+      { id: 7, name: '7', result: '89492' },
+      { id: 8, name: '8', result: '57156' },
+      { id: 9, name: '9', result: '00989' },
+      { id: 10, name: '10', result: '49158' },
+      { id: 11, name: '11', result: '85259' },
+      { id: 12, name: '12', result: '66334' },
+      { id: 13, name: '13', result: '84631' },
+      { id: 14, name: '14', result: '56143' },
+      { id: 15, name: '15', result: '74622' },
+      { id: 16, name: '16', result: '74622' },
+      { id: 17, name: '17', result: '74622' },
+      { id: 18, name: '18', result: '74622' },
+      { id: 19, name: '19', result: '74622' },
+    ],
   },
 ])
 </script>

@@ -56,7 +56,7 @@
             <thead class="q-pa-sm text-h6">
               <tr>
                 <th style="color: darkblue" colspan="3">ចេញថ្ងៃ</th>
-                <th style="color: darkred">{{ time.selectedDate }}</th>
+                <th style="color: darkred">{{ time.date }}</th>
               </tr>
             </thead>
             <template v-for="post in time.posts || []" :key="post.id">
@@ -106,7 +106,7 @@ const times = ref([
     code: 'alarm1',
     name: 'ខ្មែរ 10:35',
     icon: 'alarm',
-
+    date: 'selectedDate',
     posts: [
       { id: 1, name: 'A', value: '09', prize: '998' },
       { id: 2, name: 'B', value: '86', prize: '728' },
