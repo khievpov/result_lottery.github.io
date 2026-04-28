@@ -18,7 +18,7 @@
                 <q-popup-proxy cover transition-show="scale" transition-hide="scale">
                   <q-date v-model="selectedDate" @update:model-value="loadData">
                     <div class="row items-center justify-end">
-                      <q-btn v-close-popup label="Close" color="primary" flat />
+                      <q-btn v-close-popup label="close" color="primary" flat />
                     </div>
                   </q-date>
                 </q-popup-proxy>
@@ -29,7 +29,7 @@
 
         <div class="q-gutter-y-md q-pa-sm" style="max-width: 400px">
           <q-tabs v-model="tab" narrow-indicator dense class="text-primary">
-            <q-tab name="mails" icon="mails" label="ទាំងអស់" />
+            <q-tab name="all" icon="mails" label="ទាំងអស់" />
             <q-tab name="alarm1" icon="alarms" label="ខ្មែរ 10:35" />
             <q-tab name="alarm2" icon="alarms" label="ខ្មែរ 13:00" />
           </q-tabs>
@@ -96,9 +96,10 @@ const tab = ref('all')
 const times = ref([
   {
     id: 1,
-    code: 'mails',
+    code: 'all',
     name: 'ទាំងអស់',
     icon: 'mails',
+    date: '' + [new Date().toISOString().slice(0, 10)],
   },
 
   {
@@ -106,7 +107,7 @@ const times = ref([
     code: 'alarm1',
     name: 'ខ្មែរ 10:35',
     icon: 'alarm',
-    date: 'selectedDate',
+    date: '' + [new Date().toISOString().slice(0, 10)],
     posts: [
       { id: 1, name: 'A', value: '09', prize: '998' },
       { id: 2, name: 'B', value: '86', prize: '728' },
@@ -120,7 +121,7 @@ const times = ref([
     code: 'alarm2',
     name: 'ខ្មែរ 13:00',
     icon: 'alarm',
-
+    date: '' + [new Date().toISOString().slice(0, 10)],
     posts: [
       { id: 1, name: 'A', value: '79', prize: '96698' },
       { id: 2, name: 'B', value: '46', prize: '728' },
@@ -134,7 +135,7 @@ const times = ref([
     code: 'alarm3',
     name: 'ខ្មែរ 15:45',
     icon: 'alarm',
-
+    date: '' + [new Date().toISOString().slice(0, 10)],
     posts: [
       { id: 1, name: 'A', value: '34', prize: '9985' },
       { id: 2, name: 'B', value: '46', prize: '728' },
@@ -148,7 +149,7 @@ const times = ref([
     code: 'alarm4',
     name: 'ខ្មែរ 18:00',
     icon: 'alarm',
-
+    date: '' + [new Date().toISOString().slice(0, 10)],
     posts: [
       { id: 1, name: 'A', value: '68', prize: '998' },
       { id: 2, name: 'B', value: '46', prize: '728' },
@@ -162,7 +163,7 @@ const times = ref([
     code: 'alarm5',
     name: 'ខ្មែរ 19:45',
     icon: 'alarm',
-
+    date: '' + [new Date().toISOString().slice(0, 10)],
     posts: [
       { id: 1, name: 'A', value: '11', prize: '9984' },
       { id: 2, name: 'B', value: '46', prize: '728' },

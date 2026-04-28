@@ -16,7 +16,6 @@ export const useapiTest = defineStore('apitest', {
         return await api.get(
           'https://lotteryk38.com/api/site/Lottery/results?date=2026%2F04%2F23&typeId=1',
         )
-        this.mobileapp = res.data
       } catch (error) {
         this.error = 'Failed to fetch data lottery'
       } finally {

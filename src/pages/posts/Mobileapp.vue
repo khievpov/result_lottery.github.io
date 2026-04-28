@@ -7,36 +7,11 @@ const data = ref({})
 const prizes = ref([])
 const posts = ref([])
 const tab = ref('all')
-const times = ref([
-  {
-    id: 1,
-    code: 'mails',
-    name: 'ទាំងអស់',
-    icon: 'mails',
-  },
-  {
-    id: 2,
-    code: 'alarm1',
-    name: '5D 10:00AM',
-  },
-  {
-    id: 3,
-    code: 'alarm2',
-  },
-  {
-    id: 4,
-    code: 'alarm3',
-  },
-  {
-    id: 5,
-    code: 'alarm4',
-  },
+const times = ref([])
 
-  {
-    id: 6,
-    code: 'alarm5',
-  },
-])
+const onTabChange = (val) => {
+  fetchmobileapp(val)
+}
 
 onMounted(async () => {
   await store.fetchmobileapp().then((rs) => {
@@ -44,6 +19,7 @@ onMounted(async () => {
     times.value = data.value[0].times || times.value
     prizes.value = rs.data.data
     posts.value = rs.data.data || []
+    fetchmobileapp(tab.value)
     console.log(times.value)
   })
 })
