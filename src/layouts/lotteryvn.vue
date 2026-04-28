@@ -27,10 +27,10 @@
           </q-input>
         </div>
         <div class="q-gutter-y-md q-pa-sm" style="max-width: 400px">
-          <q-tabs v-model="tab" narrow-indicator dense>
-            <q-tab class="text-primary" name="mails" icon="mails" label="ទាំងអស់" />
-            <q-tab class="text-primary" name="alarm1" icon="alarms" label="ល្ងាច 4:30" />
-            <q-tab class="text-primary" name="alarm2" icon="alarms" label="យប់ 6:30" />
+          <q-tabs v-model="tab" narrow-indicator dense class="text-primary">
+            <q-tab name="all" icon="mails" label="ទាំងអស់" />
+            <q-tab name="alarm1" icon="alarms" label="ល្ងាច 4:30" />
+            <q-tab name="alarm2" icon="alarms" label="យប់ 6:30" />
           </q-tabs>
         </div>
 
@@ -94,17 +94,17 @@ const tab = ref('all')
 const times = ref([
   {
     id: 1,
-    code: 'mails',
+    code: 'all',
     name: 'ទាំងអស់',
     icon: 'mails',
-    date: '06-04-2026',
+    date: '' + [new Date().toISOString().slice(0, 10)],
   },
   {
     id: 2,
     code: 'alarm1',
     name: 'ល្ងាច 4:30',
     icon: 'alarm',
-    date: '06-04-2026',
+    date: '' + [new Date().toISOString().slice(0, 10)],
     posts: [
       { id: 1, name: 'ប៉ុស្តិ៍ A', value: '20', prize: '168' },
       { id: 2, name: 'ប៉ុស្តិ៍ B', value: '83', prize: '160' },
@@ -138,7 +138,7 @@ const times = ref([
     code: 'alarm2',
     name: 'យប់ 6:30',
     icon: 'alarm',
-    date: '06-04-2026',
+    date: '' + [new Date().toISOString().slice(0, 10)],
     posts: [
       { id: 1, value: '11', prize: '268' },
       { id: 2, value: '83', prize: '150' },

@@ -90,10 +90,10 @@ const tab = ref('all')
 const times = ref([
   {
     id: 1,
-    code: 'mails',
+    code: 'all',
     name: 'ទាំងអស់',
     icon: 'mails',
-    date: '24-04-2026',
+    date: '' + [new Date().toISOString().slice(0, 10)],
     separator: true,
   },
 
@@ -102,7 +102,7 @@ const times = ref([
     code: 'alarms',
     name: 'ថៃ 3:45',
     icon: 'alarms',
-    date: '24-04-2026',
+    date: '' + [new Date().toISOString().slice(0, 10)],
     separator: false,
     posts: [
       { id: 1, name: 'A', value: '97', prize: '866' },

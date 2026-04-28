@@ -7,11 +7,16 @@ const data = ref({})
 const prizes = ref([])
 const posts = ref([])
 const tab = ref('all')
-const times = ref([])
 
-const onTabChange = (val) => {
-  fetchmobileapp(val)
-}
+const items = [
+  { id: 1, name: 'all', label: 'ទាំងអស់', icon: 'mails' },
+  { id: 2, name: 'alarm1', label: '5D 10:00AM', icon: 'alarm' },
+  { id: 3, name: 'alarm2', label: '5D 12:00PM', icon: 'alarm' },
+  { id: 4, name: 'all', label: '5D 03:00PM', icon: 'alarm' },
+  { id: 5, name: 'alarm4', label: '5D 05:00PM', icon: 'alarm' },
+  { id: 6, name: 'alarm5', label: '5D 07:00PM', icon: 'alarm' },
+]
+const times = ref([])
 
 onMounted(async () => {
   await store.fetchmobileapp().then((rs) => {
@@ -19,7 +24,6 @@ onMounted(async () => {
     times.value = data.value[0].times || times.value
     prizes.value = rs.data.data
     posts.value = rs.data.data || []
-    fetchmobileapp(tab.value)
     console.log(times.value)
   })
 })
@@ -38,16 +42,16 @@ onMounted(async () => {
         <div class="absolute-top-right q-ma-md q-pa-md">
           <q-spinner-radio color="red" size="2em" />
         </div>
+
         <div class="q-gutter-y-md q-pa-sm" style="max-width: 400px">
           <q-tabs v-model="tab" narrow-indicator dense class="text-primary">
-            <q-tab name="mails" icon="mails" label="ទាំងអស់" />
-            <q-tab name="alarm1" icon="alarms" label="5D 10:00AM" />
-            <q-tab name="alarm2" icon="alarms" label="5D 12:00PM" />
-          </q-tabs>
-          <q-tabs v-model="tab" narrow-indicator dense class="text-primary">
-            <q-tab name="alarm3" icon="alarms" label="5D 03:00PM" />
-            <q-tab name="alarm4" icon="alarms" label="5D 05:00PM" />
-            <q-tab name="alarm5" icon="alarms" label="5D 07:00PM" />
+            <q-tab
+              v-for="item in items"
+              :key="item.id"
+              :name="item.name"
+              :icon="item.icon"
+              :label="item.label"
+            />
           </q-tabs>
         </div>
 
