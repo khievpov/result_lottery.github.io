@@ -6,16 +6,17 @@ const store = useapiTest()
 const data = ref({})
 const prizes = ref([])
 const posts = ref([])
-const tab = ref('all')
+const tab = ref([])
+const selectedDate = ref(new Date().toISOString().slice(0, 10))
 
-const items = [
+const items = ref([
   { id: 1, name: 'all', label: 'ទាំងអស់', icon: 'mails' },
-  { id: 2, name: 'alarm1', label: '5D 10:00AM', icon: 'alarm' },
-  { id: 3, name: 'alarm2', label: '5D 12:00PM', icon: 'alarm' },
-  { id: 4, name: 'all', label: '5D 03:00PM', icon: 'alarm' },
-  { id: 5, name: 'alarm4', label: '5D 05:00PM', icon: 'alarm' },
-  { id: 6, name: 'alarm5', label: '5D 07:00PM', icon: 'alarm' },
-]
+  { id: 2, name: 'alarm1', label: '5D ម៉ោង 10:00AM', icon: 'alarm' },
+  { id: 3, name: 'alarm2', label: '5D ម៉ោង 12:00PM', icon: 'alarm' },
+  { id: 4, name: 'alarm3', label: '5D ម៉ោង 03:00PM', icon: 'alarm' },
+  { id: 5, name: 'alarm4', label: '5D ម៉ោង 05:00PM', icon: 'alarm' },
+  { id: 6, name: 'alarm5', label: '5D ម៉ោង 07:00PM', icon: 'alarm' },
+])
 const times = ref([])
 
 onMounted(async () => {
@@ -37,10 +38,26 @@ onMounted(async () => {
           លទ្ឋផល
           <span style="color: darkred">ឆ្នោត-5D</span>
           សម្រាប់ថ្ងៃទី
-          <span style="color: darkred">{{ times[0]?.date }}</span>
+          <!-- <span style="color: darkred">{{ times[0]?.date }}</span> -->
         </div>
         <div class="absolute-top-right q-ma-md q-pa-md">
           <q-spinner-radio color="red" size="2em" />
+        </div>
+
+        <div class="q-pa-sm" style="max-width: 400px">
+          <q-input filled v-model="selectedDate" mask="date" :rules="['date']">
+            <template v-slot:append>
+              <q-icon name="event" class="cursor-pointer" style="color: darkred">
+                <q-popup-proxy cover transition-show="scale" transition-hide="scale">
+                  <q-date v-model="selectedDate" @update:model-value="loadData">
+                    <div class="row items-center justify-end">
+                      <q-btn v-close-popup label="close" color="primary" flat />
+                    </div>
+                  </q-date>
+                </q-popup-proxy>
+              </q-icon>
+            </template>
+          </q-input>
         </div>
 
         <div class="q-gutter-y-md q-pa-sm" style="max-width: 400px">
@@ -60,7 +77,7 @@ onMounted(async () => {
             flat
             bordered
             v-model="tab"
-            name="alarm1"
+            name="alarm5"
             v-for="time in times.filter((x) => x.code == tab || tab == 'all')"
             :key="time.id"
           >
@@ -92,12 +109,8 @@ onMounted(async () => {
               </tr>
               <tbody class="q-pa-sm text-h6">
                 <tr v-for="prize in post.prizes || []" :key="prize.prizeId">
-                  <td colspan="2">
-                    {{ prize.prizeName }}
-                  </td>
-                  <td>
-                    {{ prize.prize }}
-                  </td>
+                  <td colspan="2">{{ prize.prizeName }}</td>
+                  <td>{{ prize.prize }}</td>
                   <td>
                     <div v-for="val in prize?.values || []" :key="val.index">
                       លទ្ធផលឆ្នោត <br /><span class="q-pa-sm text-h5" style="color: darkred">{{
