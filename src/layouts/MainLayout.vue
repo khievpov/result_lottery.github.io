@@ -7,7 +7,7 @@
           មើលឆ្នោតប្រចាំថ្ងៃ
           <span class="absolute-top-right q-ma-lx q-pa-md">
             <q-avatar>
-              <img src="src/assets/logo-38.png" />
+              <img src="dist/spa/icons/logo-38.png" />
             </q-avatar>
           </span>
         </q-toolbar-title>
