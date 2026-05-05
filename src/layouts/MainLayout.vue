@@ -7,7 +7,7 @@
           មើលឆ្នោតប្រចាំថ្ងៃ
           <span class="absolute-top-right q-ma-lx q-pa-md">
             <q-avatar>
-              <img src="src/layouts/icon/logolottery.png" />
+              <img src="src/assets/icon-256x256.png" />
             </q-avatar>
           </span>
         </q-toolbar-title>
