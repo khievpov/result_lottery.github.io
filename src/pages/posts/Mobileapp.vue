@@ -6,17 +6,18 @@ const store = useapiTest()
 const data = ref({})
 const prizes = ref([])
 const posts = ref([])
-const tab = ref([])
+// const tab = ref([])
 const selectedDate = ref(new Date().toISOString().slice(0, 10))
 
-const items = ref([
+const tab = ref([
   { id: 1, name: 'all', label: 'ទាំងអស់', icon: 'mails' },
-  { id: 2, name: 'alarm1', label: '5D ម៉ោង 10:00AM', icon: 'alarm' },
-  { id: 3, name: 'alarm2', label: '5D ម៉ោង 12:00PM', icon: 'alarm' },
-  { id: 4, name: 'alarm3', label: '5D ម៉ោង 03:00PM', icon: 'alarm' },
-  { id: 5, name: 'alarm4', label: '5D ម៉ោង 05:00PM', icon: 'alarm' },
-  { id: 6, name: 'alarm5', label: '5D ម៉ោង 07:00PM', icon: 'alarm' },
+  { id: 2, name: '5D ម៉ោង 10:00AM', label: '5D ម៉ោង 10:00AM', icon: 'alarm' },
+  { id: 3, name: '5D ម៉ោង 12:00PM', label: '5D ម៉ោង 12:00PM', icon: 'alarm' },
+  { id: 4, name: '5D ម៉ោង 03:00PM', label: '5D 03:00PM', icon: 'alarm' },
+  { id: 5, name: '5D ម៉ោង 05:00PM', label: '5D 05:00PM', icon: 'alarm' },
+  { id: 6, name: '5D ម៉ោង 07:00PM', label: '5D 07:00PM', icon: 'alarm' },
 ])
+
 const times = ref([])
 
 onMounted(async () => {
@@ -61,14 +62,25 @@ onMounted(async () => {
         </div>
 
         <div class="q-gutter-y-md q-pa-sm" style="max-width: 400px">
-          <q-tabs v-model="tab" narrow-indicator dense class="text-primary">
+          <!-- <q-tabs v-model="tab" narrow-indicator dense class="text-primary">
             <q-tab
               v-for="item in items"
               :key="item.id"
-              :name="item.name"
+              :name="item.name === 'all' ? 'all' : item.name"
               :icon="item.icon"
               :label="item.label"
             />
+          </q-tabs> -->
+
+          <q-tabs v-model="tab" narrow-indicator dense class="text-primary">
+            <q-tab name="all" icon="mails" label="ទាំងអស់" />
+            <q-tab name="5D ម៉ោង 10:00AM" icon="alarms" label="5D ម៉ោង 10:00AM" />
+            <q-tab name="5D ម៉ោង 12:00PM" icon="alarms" label="5D ម៉ោង 12:00PM" />
+          </q-tabs>
+          <q-tabs v-model="tab" narrow-indicator dense class="text-primary">
+            <q-tab name="5D ម៉ោង 03:00PM" icon="alarms" label="5D 03:00PM" />
+            <q-tab name="5D ម៉ោង 05:00PM" icon="alarms" label="5D 05:00PM" />
+            <q-tab name="5D ម៉ោង 07:00PM" icon="alarms" label="5D 07:00PM" />
           </q-tabs>
         </div>
 
@@ -77,7 +89,7 @@ onMounted(async () => {
             flat
             bordered
             v-model="tab"
-            name="alarm5"
+            name="5D ម៉ោង 12:00PM"
             v-for="time in times.filter((x) => x.code == tab || tab == 'all')"
             :key="time.id"
           >
