@@ -1,0 +1,1 @@
+import{O as e,u as t}from"./runtime-core.esm-bundler-Dt26rsVw.js";import{j as n}from"./index-Be0PvhUF.js";var r={name:`home-Page`},i={class:`home-page`};function a(n,r,a,o,s,c){return e(),t(`div`,i)}var o=n(r,[[`render`,a]]);export{o as default};
