@@ -3,7 +3,7 @@ const routes = [
     path: '/',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/IndexPage.vue') },
+      // { path: '', component: () => import('pages/IndexPage.vue') },
       { path: 'lotteryvn', component: () => import('layouts/lotteryvn.vue') },
       { path: 'lotterymvn', component: () => import('layouts/lotterymvn.vue') },
       { path: 'lotterykh', component: () => import('layouts/lotterykh.vue') },
