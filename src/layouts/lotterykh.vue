@@ -106,7 +106,6 @@ const times = ref([
     id: 2,
     code: 'alarm1',
     name: 'ខ្មែរ 10:35',
-    icon: 'alarm',
     date: '' + [new Date().toISOString().slice(0, 10)],
     posts: [
       { id: 1, name: 'A', value: '09', prize: '998' },
