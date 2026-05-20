@@ -14,7 +14,7 @@ export const useapiTest = defineStore('apitest', {
       this.error = null
       try {
         return await api.get(
-          'https://lotteryk38.com/api/site/Lottery/results?date=2026%2F04%2F23&typeId=1',
+          'https://lotteryk38.com/api/site/Lottery/results?date=2026%2F05%2F18&typeId=1',
         )
       } catch (error) {
         this.error = 'Failed to fetch data lottery'

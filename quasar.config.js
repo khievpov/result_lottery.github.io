@@ -2,10 +2,7 @@
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-file
 
 import { defineConfig } from '#q-app/wrappers'
-//const { configure } = require('quasar/wrappers')
-//const path = require('path')
 export default defineConfig((/* ctx */) => {
-  //module.exports = configure(function () {
   return {
     eslint: {
       Warning: true,
@@ -44,9 +41,7 @@ export default defineConfig((/* ctx */) => {
         browser: ['es2022', 'firefox115', 'chrome115', 'safari14'],
         node: 'node20',
       },
-      // alias: {
-      //   pages: path.join(__dirname, './src/pages'),
-      // },
+
       vueRouterMode: 'hash', // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,

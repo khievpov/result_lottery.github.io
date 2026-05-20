@@ -6,7 +6,7 @@ app.use(cors())
 app.use(express.json())
 
 const config = {
-  // cspell:ignore lotteryapp
+  // cspell:ignore quasar_lotteryapp
   user: 'quasar_lotteryapp',
   password: 'Password168*',
   server: 'localhost',
@@ -17,10 +17,10 @@ const config = {
     trustServerCertificate: true,
   },
 }
-app.get('/users', async (req, res) => {
+app.get('/results', async (req, res) => {
   try {
     await sql.connect(config)
-    const result = await sql.query('SELECT * FROM users')
+    const result = await sql.query('SELECT * FROM lottery_resultskh') // cspell:ignore resultskh
     // cspell:ignore recordset
     res.json(result.recordset)
   } catch (err) {
@@ -28,6 +28,6 @@ app.get('/users', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' })
   }
 })
-app.listen(5001, () => {
-  console.log('Server is running on port 5001')
+app.listen(3000, () => {
+  console.log('Server is running on port 3000')
 })
