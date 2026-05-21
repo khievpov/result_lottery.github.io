@@ -6,22 +6,19 @@ app.use(cors())
 app.use(express.json())
 
 const config = {
-  // cspell:ignore quasar_lotteryapp
   user: 'quasar_lotteryapp',
   password: 'Password168*',
   server: 'localhost',
-  // cspell:ignore resultappkh
   database: 'resultappkh',
   options: {
     encrypt: true,
     trustServerCertificate: true,
   },
 }
-app.get('/results', async (req, res) => {
+app.get('/result', async (req, res) => {
   try {
     await sql.connect(config)
-    const result = await sql.query('SELECT * FROM lottery_resultskh') // cspell:ignore resultskh
-    // cspell:ignore recordset
+    const result = await sql.query('SELECT * FROM lottery_resultskh')
     res.json(result.recordset)
   } catch (err) {
     console.error(err)

@@ -6,20 +6,14 @@ export const useresultlotteryStore = defineStore('resultLottery', {
   state: () => ({
     search: {
       date: date.formatDate(new Date()),
-      time: '00:00 AM',
-      digit: 5,
       isRunning: false,
-      runIndex: 0,
       results: [],
       posts: [
         { name: 'A', results: [] },
         { name: 'B', results: [] },
         { name: 'C', results: [] },
         { name: 'D', results: [] },
-        { name: 'E', results: [] },
-        { name: 'F', results: [] },
       ],
-      prizes: [],
     },
     result: [],
     Loading: true,
